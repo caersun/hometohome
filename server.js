@@ -23,5 +23,5 @@ app.use(passport.session());
 
 app.use('/', require('./routes'));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT);
