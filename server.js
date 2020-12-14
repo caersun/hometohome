@@ -1,10 +1,13 @@
 const express = require('express');
-const passport = require('passport');
-require('dotenv').config();
-require('./models/Users');
-const cors = require('cors');
 
+const mongoose = require("moongoose");
+const routes = require("./routes");
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+const passport = require('passport');
+const cors = require('cors');
+('dotenv').config();
 require('./config/passport')(passport);
 
 app.use(express.urlencoded({ extended: true }));
@@ -17,11 +20,17 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
 app.use(cors()); //react and server communciation for data transfer
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', require('./routes'));
+// app.use('/', require('./routes'));
+app.use(routes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT);
+// require('./models/Users');
+mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/hometohome");
+
+app.listen(PORT, function () {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}! Go to https://localhost:${PORT}`);
+});
