@@ -69,7 +69,7 @@ class HomePage extends React.Component {
         }
 
         console.log(payload);
-        //joe - history is how what you'll use to switch pages
+        
         if (this.state.loginEmail === "" || this.state.loginPassword === "") {
             alert("Please fill in all fields");
         }else{
@@ -161,7 +161,8 @@ class HomePage extends React.Component {
                                     <Input type="email"
                                     id="loginEmail"
                                     name="loginEmail"
-                                    className="form-control text-center"
+                                    className="
+                                    form-control text-center"
                                     placeholder="Enter Email"
                                     value={this.state.loginEmail}
                                     onChange={this.handleChange} 

@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 require('dotenv').config();
-require('./models/Users');
+require('./models/Users.js');
 const cors = require('cors');
 
 const app = express();
