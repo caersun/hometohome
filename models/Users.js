@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken'); //securely transmits information as JSON ob
 
 const UserSchema = new mongoose.Schema({
 	fullName: String,
-	hash:String, 
+	hash: String, 
 	email: {type: String, unique: true, lowercase: true, required: [true, "can't be blank"], index: true}
 });
 
