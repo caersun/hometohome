@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+const express = require('express');
+const passport = require('passport');
+require('dotenv').config();
+require('./models/Users.js');
+const cors = require('cors');
+=======
 const express = require("express");
 const session = require("express-session");
+>>>>>>> main
 
 const mongoose = require("moongoose");
 const routes = require("./routes");
