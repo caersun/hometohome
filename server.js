@@ -1,15 +1,17 @@
-const express = require('express');
+const express = require("express");
+const session = require("express-session");
 
 const mongoose = require("moongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 const passport = require('passport');
+
 const cors = require('cors');
 ('dotenv').config();
-require('./config/passport')(passport);
+// require('./config/passport')(passport);
 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -21,7 +23,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// not sure what this line is doing?
 app.use(cors()); //react and server communciation for data transfer
+
 app.use(passport.initialize());
 app.use(passport.session());
 
