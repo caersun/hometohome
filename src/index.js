@@ -1,8 +1,9 @@
 import React, {useState} from "react";
+import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Card, CardBody, Container, Input, Form, FormGroup, Label } from 'reactstrap';
 // ***still need to build API folder ***import API from '../../../utils/API'
-import DangerAlert from '../../Alert'
+
 
 class HomePage extends React.Component {
     state = {

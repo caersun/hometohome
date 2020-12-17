@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 const express = require('express');
 const passport = require('passport');
 require('dotenv').config();
 require('./models/Users.js');
 const cors = require('cors');
-=======
-const express = require("express");
-const session = require("express-session");
->>>>>>> main
 
 const mongoose = require("moongoose");
 const routes = require("./routes");
@@ -15,7 +10,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const passport = require('passport');
 
-const cors = require('cors');
 ('dotenv').config();
 // require('./config/passport')(passport);
 
@@ -31,7 +25,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// not sure what this line is doing?
 app.use(cors()); //react and server communciation for data transfer
 
 app.use(passport.initialize());
