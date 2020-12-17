@@ -1,17 +1,15 @@
 const express = require('express');
 const passport = require('passport');
+const session= require("express-session")
 require('dotenv').config();
 require('./models/Users.js');
 const cors = require('cors');
 
-const mongoose = require("moongoose");
+const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const passport = require('passport');
 
-('dotenv').config();
-// require('./config/passport')(passport);
 
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(express.urlencoded({ extended: true }));
@@ -30,11 +28,18 @@ app.use(cors()); //react and server communciation for data transfer
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // app.use('/', require('./routes'));
 app.use(routes);
-
+//create a new post to login
+app.post('/login',
+  passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/login'
+  }
+));
 // require('./models/Users');
-mongoose.connect(process.env.MONGODB_URI || "mongod://localhost/hometohome");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hometohome");
 
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}! Go to https://localhost:${PORT}`);
