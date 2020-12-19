@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs'); //hashes the password 
-const jwt = require('jsonwebtoken'); //securely transmits information as JSON object
+// const jwt = require('jsonwebtoken'); //securely transmits information as JSON object
 
 const UserSchema = new mongoose.Schema({
 	fullName: String,
