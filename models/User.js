@@ -16,4 +16,4 @@ UserSchema.methods.setPassword = function (password) {
     this.hash = bcrypt.hashSync(password, 10);
 };
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
