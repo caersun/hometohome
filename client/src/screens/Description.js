@@ -1,4 +1,4 @@
- // src/screens/FoodDetails.js
+ // src/screens/FoodItems.js
  import React, {Component} from 'react';
  import {View, Button, Alert} from 'react-native';
 
@@ -7,7 +7,7 @@
 
  import {AppContext} from '../../Global';
 
- class FoodDetails extends Component {
+ class FoodItems extends Component {
    static navigationOptions = ({navigation}) => {
      return {
        title: navigation.getParam('item').name.substr(0, 12) + '...',
