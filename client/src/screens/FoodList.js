@@ -12,7 +12,7 @@ const BASE_URL = Config.NGROK_HTTPS_URL;
 class FoodList extends Component {
   static navigationOptions = ({navigation}) => {
     return {
-      title: 'Hungry?',
+      title: 'Home to Home',
       headerRight: <NavHeaderRight />,
     };
   };
