@@ -32,25 +32,6 @@
      this.setState({qty: nextValue});
    };
 
-   addToCart = (item, qty) => {
-     // prevent user from adding items to
-     const item_id = this.context.cart_items.findIndex(
-       el => el.restaurant.id !== item.restaurant.id,
-     );
-     if (item_id === -1) {
-       Alert.alert(
-         'Added to basket',
-         `${qty} ${item.name} was added to the basket.`,
-       );
-       this.context.addToCart(item, qty); // call method from global
-     } else {
-       Alert.alert(
-         'Cannot add to basket',
-         'You can only order from one restaurant for each order.',
-       );
-     }
-   };
-
    render() {
      const {qty} = this.state;
      return (
@@ -64,4 +45,4 @@
    }
  }
 
- export default FoodDetails;
+ export default FoodItems;

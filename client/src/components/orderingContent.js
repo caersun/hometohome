@@ -5,8 +5,8 @@ export class AppContextProvider extends React.Component {
   state = {
     cart_items: [],
     user_id: '',
-    user_name: 'Wern Ancheta',
-    user_type: 'customer',
+    user_name: '',
+    user_type: '',
     room_id: '',
     room_name: '',
   };

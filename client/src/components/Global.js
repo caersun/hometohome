@@ -17,7 +17,7 @@ export class AppContextProvider extends React.Component {
 
   addToCart = (item, qty) => {
     let found = this.state.cart_items.filter(el => el.id === item.id);
-    if (found.length == 0) {
+    if (found.length === 0) {
       this.setState(prevState => {
         return { cart_items: prevState.cart_items.concat({ ...item, qty }) };
       });
