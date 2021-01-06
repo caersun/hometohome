@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import ReactDOM from 'react-dom';
+import React from "react";
+// import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Card, CardBody, Container, Input, Form, FormGroup, Label } from 'reactstrap';
-// ***still need to build API folder ***import API from '../../../utils/API'
+import API from "../../utils/API";
 
 
 class HomePage extends React.Component {
@@ -16,9 +16,10 @@ class HomePage extends React.Component {
         // show: false
     };
 
-    alert(){
-        const [visible, setVisible] = useState(true);
-    }
+    // TODO: never called and was throwing errors
+    // alert() {
+    //     const [visible, setVisible] = useState(true);
+    // }
 
     handleChange = (event) => {
         const target = event.target;
@@ -42,17 +43,16 @@ class HomePage extends React.Component {
         };
 
         if (this.state.fullName === "" || this.state.email === "" || this.state.password === "" || this.state.confirmPassword === "") {
-
-            alert("Please fill in all Registration Fields")
+            alert("Please fill in all Registration Fields");
         } else if (payload.password === confirmPassword){
             //Post route to save new registered user
             console.log("matched");
             console.log(payload);
 
             API.registerUser(payload, this.props.history);
-            API.validateToken(function(){
-                console.log('Token Validation processed');
-            });
+            // API.validateToken(function(){
+            //     console.log('Token Validation processed');
+        
 
         } else {
             //error on password not matching
@@ -67,22 +67,21 @@ class HomePage extends React.Component {
         const payload = {
             email: this.state.loginEmail,
             password: this.state.loginPassword
-        }
+        };
 
         console.log(payload);
         
         if (this.state.loginEmail === "" || this.state.loginPassword === "") {
             alert("Please fill in all fields");
-        }else{
+        } else {
+            // console.log("need to make api?");
             API.loginUser(payload, this.props.history);
-            API.validateToken(function(){
+            API.validateToken(() => {
                 console.log('Token Validation processed');
             });
-            
-        }    
+        };
     };
-
-
+            
     render() {
         return (
             <Container>
@@ -192,7 +191,7 @@ class HomePage extends React.Component {
                 </div>
             </Container>
         );
-    }
+    };  
 };
 
 export default HomePage;
@@ -200,4 +199,4 @@ export default HomePage;
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
