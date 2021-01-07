@@ -1,7 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const mongoose = require('mongoose');
-const User = mongoose.model('Users');
+// const mongoose = require('mongoose');
+// const User = mongoose.model('Users');
+const db = require("./../models");
 
 const JwtStrategy = require('passport-jwt').Strategy,
 ExtractJwt = require('passport-jwt').ExtractJwt;
@@ -17,7 +18,7 @@ module.exports = function(passport) {
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
         console.log('jwt_payload', jwt_payload);
 
-        User.findOne({_id: jwt_payload._id}, function(err, user) {
+        db.User.findOne({_id: jwt_payload._id}, function(err, user) {
             user.hash = undefined;
             if (err) {
                 return done(err, false);
@@ -36,7 +37,7 @@ module.exports = function(passport) {
         passwordField: 'password'
     },
         function (username, password, done) {
-            User.findOne({email: username}).exec(function (err, user) {
+            db.User.findOne({email: username}).exec(function (err, user) {
                 if (err) {
                     return done(err);
                 }
