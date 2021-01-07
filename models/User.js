@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		cook: {
 			type: DataTypes.BOOLEAN,
-			default: false
+			defaultValue: false
 		}
 	});
 
