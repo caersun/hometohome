@@ -1,33 +1,33 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs'); //hashes the password 
-// const jwt = require('jsonwebtoken'); //securely transmits information as JSON object
+const jwt = require('jsonwebtoken'); //securely transmits information as JSON object
 
-// const UserSchema = new mongoose.Schema({
-// 	fullName: String,
-// 	hash: String, 
-// 	email: {type: String, unique: true, lowercase: true, required: [true, "can't be blank"], index: true}
-// });
+const UserSchema = new mongoose.Schema({
+	fullName: String,
+	hash: String,
+	email: { type: String, unique: true, lowercase: true, required: [true, "can't be blank"], index: true }
+});
 
-// UserSchema.methods.validPassword = function (password) {
-//     return bcrypt.compareSync(password, this.hash);
-// };
+UserSchema.methods.validPassword = function (password) {
+	return bcrypt.compareSync(password, this.hash);
+};
 
-// UserSchema.methods.setPassword = function (password) {
-//     this.hash = bcrypt.hashSync(password, 10);
-// };
+UserSchema.methods.setPassword = function (password) {
+	this.hash = bcrypt.hashSync(password, 10);
+};
 
-// module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
 
 module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define("User", {
-		// firstName: {
-		// 	type: DataTypes.STRING,
-		// 	allowNull: false
-		// },
-		// lastName: {
-		// 	type: DataTypes.STRING,
-		// 	allowNull: false
-		// },
+		firstName: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		lastName: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		fullName: {
 			type: DataTypes.STRING,
 			allowNull: false
