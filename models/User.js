@@ -1,15 +1,17 @@
-const bcrypt = require('bcryptjs'); //hashes the password 
+const bcrypt = require("bcryptjs"); //hashes the password 
+const LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
 
 module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define("User", {
-		firstName: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		lastName: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
+		// firstName: {
+		// 	type: DataTypes.STRING,
+		// 	// allowNull: false
+		// },
+		// lastName: {
+		// 	type: DataTypes.STRING,
+		// 	// allowNull: false
+		// },
 		fullName: {
 			type: DataTypes.STRING,
 			allowNull: false

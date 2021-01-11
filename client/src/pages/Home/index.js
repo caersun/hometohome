@@ -1,97 +1,126 @@
-import React from "react";
+import React, { useState} from "react";
 // import ReactDOM from 'react-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Card, CardBody, Container, Input, Form, FormGroup, Label } from 'reactstrap';
-import API from "../../utils/API";
+// import API from "../../utils/API";
+import axios from "axios";
 
 
-class HomePage extends React.Component {
-    state = {
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        loginEmail: "",
-        loginPassword: ""
-        // show: false
+function HomePage() {
+    const [registerFullname, setRegisterFullname] = useState("");
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+    
+    const handleRegistration = () => {
+        axios({
+            method: "post",
+            data: {
+                fullName: registerFullname, 
+                email: registerEmail,
+                password: registerPassword
+            },
+            withCredentials: true,
+            url: "http://localhost:3001/register"
+        }).then(res => console.log("inside handleRegistration", res));
     };
+    const handleLogin = () => {
+        axios({
+            method: "post",
+            data: {
+                email: loginEmail,
+                password: loginPassword
+            },
+            withCredentials: true,
+            url: "http://localhost:3001/login"
+        }).then(res => console.log("inside handleLogin", res));
+    };
+
+    // state = {
+    //     fullName: "",
+    //     email: "",
+    //     password: "",
+    //     confirmPassword: "",
+    //     loginEmail: "",
+    //     loginPassword: ""
+    //     // show: false
+    // };
 
     // TODO: never called and was throwing errors
     // alert() {
     //     const [visible, setVisible] = useState(true);
     // }
 
-    handleChange = (event) => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
+    // handleChange = (event) => {
+    //     const target = event.target;
+    //     const name = target.name;
+    //     const value = target.value;
 
-        this.setState({
-            [name]: value
-        });
-    };
+    //     this.setState({
+    //         [name]: value
+    //     });
+    // };
     
-    handleRegistration = (event) => {
-        event.preventDefault();
-        console.log("registration button clicked");
+    // handleRegistration = (event) => {
+    //     event.preventDefault();
+    //     console.log("registration button clicked");
 
-        const confirmPassword = this.state.confirmPassword;
-        const payload = {
-            fullName: this.state.fullName,
-            email: this.state.email,
-            password: this.state.password
-        };
+    //     const confirmPassword = this.state.confirmPassword;
+    //     const payload = {
+    //         fullName: this.state.fullName,
+    //         email: this.state.email,
+    //         password: this.state.password
+    //     };
 
-        if (this.state.fullName === "" || this.state.email === "" || this.state.password === "" || this.state.confirmPassword === "") {
-            alert("Please fill in all Registration Fields");
-        } else if (payload.password === confirmPassword){
-            //Post route to save new registered user
-            console.log("matched");
-            console.log(payload);
+    //     if (this.state.fullName === "" || this.state.email === "" || this.state.password === "" || this.state.confirmPassword === "") {
+    //         alert("Please fill in all Registration Fields");
+    //     } else if (payload.password === confirmPassword){
+    //         //Post route to save new registered user
+    //         console.log("matched");
+    //         console.log(payload);
 
-            API.registerUser(payload, this.props.history);
-            // API.validateToken(function(){
-            //     console.log('Token Validation processed');
+    //         API.registerUser(payload, this.props.history);
+    //         // API.validateToken(function(){
+    //         //     console.log('Token Validation processed');
         
 
-        } else {
-            //error on password not matching
-            alert("Passwords Not matched");
-        }    
-    };
+    //     } else {
+    //         //error on password not matching
+    //         alert("Passwords Not matched");
+    //     }    
+    // };
 
-    handleLogin = (event) => {
-        event.preventDefault();
-        console.log("Submit button clicked");
+    // handleLogin = (event) => {
+    //     event.preventDefault();
+    //     console.log("Submit button clicked");
 
-        const payload = {
-            email: this.state.loginEmail,
-            password: this.state.loginPassword
-        };
+    //     const payload = {
+    //         email: this.state.loginEmail,
+    //         password: this.state.loginPassword
+    //     };
 
-        console.log(payload);
+    //     console.log(payload);
         
-        if (this.state.loginEmail === "" || this.state.loginPassword === "") {
-            alert("Please fill in all fields");
-        } else {
-            // console.log("need to make api?");
-            API.loginUser(payload, this.props.history);
-            API.validateToken(() => {
-                console.log('Token Validation processed');
-            });
-        };
-    };
+    //     if (this.state.loginEmail === "" || this.state.loginPassword === "") {
+    //         alert("Please fill in all fields");
+    //     } else {
+    //         // console.log("need to make api?");
+    //         API.loginUser(payload, this.props.history);
+    //         API.validateToken(() => {
+    //             console.log('Token Validation processed');
+    //         });
+    //     };
+    // };
             
-    render() {
+    // render() {
         return (
             <Container>
                 <div className="row mt-5">
                     <div className="col-md-6 m-auto">
                         <Card>
                             <CardBody>
-                                <h1 className="text-center mb-3">
-                                    <FontAwesomeIcon icon="id-card" /> Register
-                                </h1>
+                                <h1 className="text-center mb-3">Register</h1>
 
                                 <Form>
                                     <FormGroup>
@@ -101,8 +130,7 @@ class HomePage extends React.Component {
                                         name="fullName" 
                                         className="form-control text-center"
                                         placeholder="Full Name"
-                                        value={this.state.fullName}
-                                        onChange={this.handleChange}
+                                        onChange={e => setRegisterFullname(e.target.value)}
                                         ></Input>
                                     </FormGroup>
                                     <FormGroup>
@@ -112,8 +140,7 @@ class HomePage extends React.Component {
                                         name="email" 
                                         className="form-control text-center"
                                         placeholder="Email address"
-                                        value={this.state.email}
-                                        onChange={this.handleChange}
+                                        onChange={e => setRegisterEmail(e.target.value)}
                                         ></Input>
                                     </FormGroup>
                                     <FormGroup>
@@ -123,11 +150,10 @@ class HomePage extends React.Component {
                                         name="password" 
                                         className="form-control text-center"
                                         placeholder="Create Password"
-                                        value={this.state.password}
-                                        onChange={this.handleChange}
+                                        onChange={e => setRegisterPassword(e.target.value)}
                                         ></Input>
                                     </FormGroup>
-                                    <FormGroup>
+                                    {/* <FormGroup>
                                         <Label for="confirmPassword">Confirm Password</Label>
                                         <Input type="password" 
                                         id="confirmPassword"
@@ -137,10 +163,10 @@ class HomePage extends React.Component {
                                         value={this.state.confirmPassword}
                                         onChange={this.handleChange} 
                                         ></Input>
-                                    </FormGroup>
+                                    </FormGroup> */}
                                     <Button type="submit" 
                                         className="btn btn-primary btn-block mt-5"
-                                        onClick={this.handleRegistration}>
+                                        onClick={handleRegistration}>
                                             Register
                                     </Button>
                                     {/* <DangerAlert></DangerAlert> */}
@@ -153,7 +179,7 @@ class HomePage extends React.Component {
                         <Card>
                             <CardBody>
                             <h1 className="text-center mb-3">
-                                <FontAwesomeIcon icon="user" /> Sign In
+                                Sign In
                             </h1>
                             <Form>
                                 <FormGroup>
@@ -164,8 +190,7 @@ class HomePage extends React.Component {
                                     className="
                                     form-control text-center"
                                     placeholder="Enter Email"
-                                    value={this.state.loginEmail}
-                                    onChange={this.handleChange} 
+                                    onChange={e => setLoginEmail(e.target.value)} 
                                     ></Input>
                                 </FormGroup>
                                 <FormGroup>
@@ -175,13 +200,12 @@ class HomePage extends React.Component {
                                     name="loginPassword"
                                     className="form-control text-center"
                                     placeholder="Enter Password"
-                                    value={this.state.loginPassword}
-                                    onChange={this.handleChange} 
+                                    onChange={e => setLoginPassword(e.target.value)} 
                                     ></Input>
                                 </FormGroup>
                                 <Button type="submit"
                                     className="btn btn-primary btn-block mt-5"
-                                    onClick={this.handleLogin}>
+                                    onClick={handleLogin}>
                                         Sign In
                                 </Button>
                                 </Form>
@@ -192,7 +216,7 @@ class HomePage extends React.Component {
             </Container>
         );
     };  
-};
+// };
 
 export default HomePage;
 
