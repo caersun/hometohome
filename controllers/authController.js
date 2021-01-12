@@ -16,14 +16,10 @@ const authController = {
     },
     login: (req, res) => {
         if (req.user) {
+            console.log("You've logged in, user!");
             return res.json(req.user);
-        }
-        console.log("failed log in :(");
-        return res.status(401).json({message: "invalid credentials"});
-        // console.log("inside authController login", req.body);
-        // req.login();
-        // res.json(req.user);
-        // req.LogIn();
+        };
+        return res.status(401).json({ message: "invalid credentials" });
     },
     logout: (req, res) => {
         req.logout();
