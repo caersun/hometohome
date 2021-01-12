@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 // import ReactDOM from 'react-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Card, CardBody, Container, Input, Form, FormGroup, Label } from 'reactstrap';
@@ -22,7 +22,7 @@ function HomePage() {
                 password: registerPassword
             },
             withCredentials: true,
-            url: "http://localhost:3001/register"
+            url: "http://localhost:3001/api/auth/register"
         }).then(res => console.log("inside handleRegistration", res));
     };
     const handleLogin = () => {
@@ -33,7 +33,7 @@ function HomePage() {
                 password: loginPassword
             },
             withCredentials: true,
-            url: "http://localhost:3001/login"
+            url: "http://localhost:3001/api/auth/login"
         }).then(res => console.log("inside handleLogin", res));
     };
 

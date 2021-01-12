@@ -24,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
 				isEmail: true
 			}
 		},
-		hash: {
+		password: {
 			type: DataTypes.STRING,
-			is: /^[0-9a-f]{64}$/i
+			allowNull: false
 		},
 		cook: {
 			type: DataTypes.BOOLEAN,
@@ -34,12 +34,13 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	});
 
-	User.prototype.validatePassword = (password) => {
-		return bcrypt.compareSync(password, this.hash);
+	User.prototype.validatePassword = function (password) {
+		console.log("inside model", password, this);
+		return bcrypt.compareSync(password, this.password);
 	};
 
 	User.addHook("beforeCreate", (user) => {
-		user.hash = bcrypt.hashSync(user.hash, bcrypt.genSaltSync(10), null);
+		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
 	});
 
 	User.associate = db => {
