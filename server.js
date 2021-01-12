@@ -7,9 +7,8 @@ const passport = require('passport');
 const cookieParser = require("cookie-parser");
 
 const db = require("./models");
+const routes = require("./routes");
 
-// const routes = require("./routes");
-// const User = require("./models/User");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -34,45 +33,44 @@ if (process.env.NODE_ENV === "production") {
   // });
 }
 
-// app.use('/', require('./routes'));
-// app.use(routes);
+app.use(routes);
 
-app.post("/login", (req, res, next) => {
+// app.post("/login", (req, res, next) => {
+// //   passport.authenticate("local", (err, user, infoCB) => {
+// //     if (!user) res.send("No user exists");
+// //     else {
+// //       req.logIn(user, err => {
+// //         res.send("Successfully authenticated");
+// //         console.log(req.user);
+// //       })
+// //     }
+// //   })
+// // }
+// // (req, res, next) => {
 //   passport.authenticate("local", (err, user, infoCB) => {
+//     // if (err) throw err;
 //     if (!user) res.send("No user exists");
 //     else {
 //       req.logIn(user, err => {
+//         // if (err) throw err;
 //         res.send("Successfully authenticated");
 //         console.log(req.user);
 //       })
 //     }
-//   })
-// }
-// (req, res, next) => {
-  passport.authenticate("local", (err, user, infoCB) => {
-    // if (err) throw err;
-    if (!user) res.send("No user exists");
-    else {
-      req.logIn(user, err => {
-        // if (err) throw err;
-        res.send("Successfully authenticated");
-        console.log(req.user);
-      })
-    }
-  })(req, res, next); }
-);
-app.post("/register", (req, res) => {
-  console.log("in register route", req.body);
-  db.User.create({
-    fullName: req.body.fullName,
-    email: req.body.email,
-    hash: req.body.password
-  });
-});
+//   })(req, res, next); }
+// );
+// app.post("/register", (req, res) => {
+//   console.log("in register route", req.body);
+//   db.User.create({
+//     fullName: req.body.fullName,
+//     email: req.body.email,
+//     hash: req.body.password
+//   });
+// });
 // probably want this route to be /api/users/:id?
-app.get("/user", (req, res) => {
-  console.log(req.body);
-});
+// app.get("/user", (req, res) => {
+//   console.log(req.body);
+// });
 //create a new post to login
 // app.post('/login',
 //   passport.authenticate('local', {

@@ -33,7 +33,8 @@ module.exports = function (passport) {
 //   );
 
   passport.use("local", new LocalStrategy({ usernameField: "email" }, function (email, password, done) {
-        db.User.findOne({ where: { email: email } }).then(function (err, user) {
+        db.User.findOne({ where: { email: email } }).then(function (user, err) {
+        // console.log("inside passport.js", user, err);
           if (err) {
             return done(err);
           }
@@ -43,7 +44,7 @@ module.exports = function (passport) {
           if (!user.validatePassword(password)) {
             return done(null, false, { message: "Incorrect password." });
           }
-          user.hash = undefined; // what's this line doing?
+          user.hash = undefined; 
           return done(null, user);
         });
     }));
