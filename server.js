@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const db = require("./models");
 
 // const routes = require("./routes");
-const User = require("./models/User");
+// const User = require("./models/User");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -24,6 +24,7 @@ app.use(cookieParser("keyboard cat"));
 
 app.use(passport.initialize());
 app.use(passport.session());
+require("./config/passport")(passport);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -36,28 +37,37 @@ if (process.env.NODE_ENV === "production") {
 // app.use('/', require('./routes'));
 // app.use(routes);
 
-app.post("/login", (req, res) => {
-  console.log(req.body);
-});
+app.post("/login", (req, res, next) => {
+//   passport.authenticate("local", (err, user, infoCB) => {
+//     if (!user) res.send("No user exists");
+//     else {
+//       req.logIn(user, err => {
+//         res.send("Successfully authenticated");
+//         console.log(req.user);
+//       })
+//     }
+//   })
+// }
+// (req, res, next) => {
+  passport.authenticate("local", (err, user, infoCB) => {
+    // if (err) throw err;
+    if (!user) res.send("No user exists");
+    else {
+      req.logIn(user, err => {
+        // if (err) throw err;
+        res.send("Successfully authenticated");
+        console.log(req.user);
+      })
+    }
+  })(req, res, next); }
+);
 app.post("/register", (req, res) => {
   console.log("in register route", req.body);
   db.User.create({
     fullName: req.body.fullName,
     email: req.body.email,
     hash: req.body.password
-  })
-  // db.User.findOne({ where: {email: req.body.email} }, (err, exist) => {
-  //   if (err) throw err;
-  //   if (exist) res.send("User already exists");
-  //   if (!exist) {
-  //     db.User.create({
-  //       fullName: req.body.fullName,
-  //       email: req.body.email,
-  //       password: req.body.password
-  //     });
-  //     res.send("User created");
-  //   }
-  // })
+  });
 });
 // probably want this route to be /api/users/:id?
 app.get("/user", (req, res) => {
