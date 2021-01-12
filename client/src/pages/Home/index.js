@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-// import ReactDOM from 'react-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Card, CardBody, Container, Input, Form, FormGroup, Label } from 'reactstrap';
-// import API from "../../utils/API";
-import axios from "axios";
+import API from "../../utils/API";
 
 
 function HomePage() {
@@ -14,107 +11,17 @@ function HomePage() {
     const [loginPassword, setLoginPassword] = useState("");
     
     const handleRegistration = () => {
-        axios({
-            method: "post",
-            data: {
-                fullName: registerFullname, 
-                email: registerEmail,
-                password: registerPassword
-            },
-            withCredentials: true,
-            url: "http://localhost:3001/api/auth/register"
-        }).then(res => console.log("inside handleRegistration", res));
+        API.register(registerFullname, registerEmail, registerPassword)
+            .then(res => console.log("registered at Home component", res))
+            .catch(err => console.log(err));
     };
     const handleLogin = () => {
-        axios({
-            method: "post",
-            data: {
-                email: loginEmail,
-                password: loginPassword
-            },
-            withCredentials: true,
-            url: "http://localhost:3001/api/auth/login"
-        }).then(res => console.log("inside handleLogin", res));
-    };
+        API.login(loginEmail, loginPassword)
+            .then(res => console.log("logged in at Home component", res))
+            .catch(err => console.log(err));
+        };
 
-    // state = {
-    //     fullName: "",
-    //     email: "",
-    //     password: "",
-    //     confirmPassword: "",
-    //     loginEmail: "",
-    //     loginPassword: ""
-    //     // show: false
-    // };
-
-    // TODO: never called and was throwing errors
-    // alert() {
-    //     const [visible, setVisible] = useState(true);
-    // }
-
-    // handleChange = (event) => {
-    //     const target = event.target;
-    //     const name = target.name;
-    //     const value = target.value;
-
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
-    
-    // handleRegistration = (event) => {
-    //     event.preventDefault();
-    //     console.log("registration button clicked");
-
-    //     const confirmPassword = this.state.confirmPassword;
-    //     const payload = {
-    //         fullName: this.state.fullName,
-    //         email: this.state.email,
-    //         password: this.state.password
-    //     };
-
-    //     if (this.state.fullName === "" || this.state.email === "" || this.state.password === "" || this.state.confirmPassword === "") {
-    //         alert("Please fill in all Registration Fields");
-    //     } else if (payload.password === confirmPassword){
-    //         //Post route to save new registered user
-    //         console.log("matched");
-    //         console.log(payload);
-
-    //         API.registerUser(payload, this.props.history);
-    //         // API.validateToken(function(){
-    //         //     console.log('Token Validation processed');
-        
-
-    //     } else {
-    //         //error on password not matching
-    //         alert("Passwords Not matched");
-    //     }    
-    // };
-
-    // handleLogin = (event) => {
-    //     event.preventDefault();
-    //     console.log("Submit button clicked");
-
-    //     const payload = {
-    //         email: this.state.loginEmail,
-    //         password: this.state.loginPassword
-    //     };
-
-    //     console.log(payload);
-        
-    //     if (this.state.loginEmail === "" || this.state.loginPassword === "") {
-    //         alert("Please fill in all fields");
-    //     } else {
-    //         // console.log("need to make api?");
-    //         API.loginUser(payload, this.props.history);
-    //         API.validateToken(() => {
-    //             console.log('Token Validation processed');
-    //         });
-    //     };
-    // };
-            
-    // render() {
-        return (
+    return (
             <Container>
                 <div className="row mt-5">
                     <div className="col-md-6 m-auto">
@@ -215,7 +122,7 @@ function HomePage() {
                 </div>
             </Container>
         );
-    };  
+};  
 // };
 
 export default HomePage;
