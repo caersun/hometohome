@@ -1,5 +1,6 @@
 import { Container } from "reactstrap";
 import { useAuthState } from "../utils/AuthContext";
+import Scroll from "./Scroll";
 
 const Dash = () => {
     const userDetails = useAuthState();
@@ -10,6 +11,7 @@ const Dash = () => {
     return <Container>
         <div>This is where your dashboard will go.</div>
         <p>Welcome {userDetails.user}</p>
+        <Scroll />
     </Container>
 };
 
