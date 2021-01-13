@@ -1,5 +1,4 @@
 const db = require("../models");
-// const passport = require("passport");
 
 // defining methods for the usersController
 const usersController = {

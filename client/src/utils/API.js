@@ -1,26 +1,21 @@
 import axios from "axios";
 
+const domain = "http://localhost:3001";
+// TODO: How to make it so URL is NOT at localhost:3001? Does not register/login without it
 const API = {
-    register: (fullName, email, password) => {
-        axios({
-            method: "POST",
-            data: { fullName, email, password },
-            withCredentials: true,
-            url: "http://localhost:3001/api/auth/register"
-        })
-            .then(res => console.log("inside API.register() and registered!", res))
-            .catch(err => console.log("error with registration:", err));
+    register: (userInfo) => {
+        return axios.post(domain + "/api/auth/signup", userInfo);
     },
-    login: (email, password) => {
-        axios({
-            method: "POST", 
-            data: { email, password },
-            withCredentials: true,
-            url: "http://localhost:3001/api/auth/login"
-        })
-            .then(res => console.log("inside API.login() and logged in!", res))
-            .catch(err => console.log("error with login:", err));
+    login: (user) => {
+        return axios.post(domain + "/api/auth/login", user);
     },
+    logout: () => {
+        return axios.get(domain + "/api/auth/logout");
+    },
+    // TODO: Doesn't work??? req.user does not exist
+    // getCurrentUser: () => {
+    //     return axios.get(domain + "/api/auth/user");
+    // },
 };
 
 export default API;
