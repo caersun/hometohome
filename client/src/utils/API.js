@@ -1,38 +1,21 @@
 import axios from "axios";
-// import qs from "qs";
 
-//setting up environment variables
-// const clientID = process.env.REACT_APP_API_KEY;
-// const secret = process.env.REACT_APP_API_SECRET; 
-
-export default {
-    registerUser: function (payload, history) {
-        console.log("payload", payload);
-        axios.post("/auth/register", payload)
-        .then(data => {
-            console.log('successful post', data);
-            localStorage.setItem('login_token', data.data.token);  
-        })
+const domain = "http://localhost:3001";
+// TODO: How to make it so URL is NOT at localhost:3001? Does not register/login without it
+const API = {
+    register: (userInfo) => {
+        return axios.post(domain + "/api/auth/signup", userInfo);
     },
+    login: (user) => {
+        return axios.post(domain + "/api/auth/login", user);
+    },
+    logout: () => {
+        return axios.get(domain + "/api/auth/logout");
+    },
+    // TODO: Doesn't work??? req.user does not exist
+    // getCurrentUser: () => {
+    //     return axios.get(domain + "/api/auth/user");
+    // },
+};
 
-    loginUser: function (payload, history) {
-        axios.post("/auth/login", payload)
-        .then(data => {
-            console.log(data);
-            localStorage.setItem('login_token', data.data.token);
-            axios({
-                method:'GET',
-                url: '/auth/isLoggedInTest',
-                headers:{
-                    common:{
-                        "login_token" : localStorage.getItem('login_token')
-                    }
-                }
-            })
-            .then(data => {
-                console.log('proof that youre logged in', data);
-            });
-        })
-        .catch(err => console.log(err));
-    }
-}
+export default API;

@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs"); //hashes the password 
-const LocalStrategy = require("passport-local").Strategy;
-const passport = require("passport");
+// const LocalStrategy = require("passport-local").Strategy;
+// const passport = require("passport");
 
 module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define("User", {
@@ -34,14 +34,14 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	});
 
-	User.prototype.validatePassword = function (password) {
-		console.log("inside model", password, this);
-		return bcrypt.compareSync(password, this.password);
-	};
+	// User.prototype.validatePassword = function (password) {
+	// 	// console.log("inside model", password, this);
+	// 	return bcrypt.compareSync(password, this.password);
+	// };
 
-	User.addHook("beforeCreate", (user) => {
-		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-	});
+	// User.addHook("beforeCreate", (user) => {
+	// 	user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+	// });
 
 	User.associate = db => {
 		User.hasMany(db.Listing, { onDelete: "cascade" });
