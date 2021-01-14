@@ -13,7 +13,7 @@
     // The map, centered at Trail Location
     var map = new google.maps.Map(
         document.getElementById('gMap'), {zoom: 12, center: parameterLocation});
-    // The marker, positioned at Trail Location
+    // The marker, positioned at Parameter Location
     var marker = new google.maps.Marker({position: parameterLocation, map: map});
   // }
 };
