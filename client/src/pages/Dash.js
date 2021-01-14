@@ -4,13 +4,11 @@ import Scroll from "./Scroll";
 
 const Dash = () => {
     const userDetails = useAuthState();
-    console.log("in dash", userDetails);
-    console.log("user", userDetails.user);
-    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("user in localStorage", storedUser);
+    console.log("in dash ~ currentUser", userDetails.user);
+
     return <Container>
         <div>This is where your dashboard will go.</div>
-        <p>Welcome {userDetails.user}</p>
+        <p>Welcome {userDetails.user.fullName}</p>
         <Scroll />
     </Container>
 };
