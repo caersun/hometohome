@@ -1,5 +1,6 @@
 import { Container, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
+// import { useAuthState } from "../utils/AuthContext";
 
 // TODO: Need styling for landing. Think https://doordash.com or https://pizzahut.com
 

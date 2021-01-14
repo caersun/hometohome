@@ -1,16 +1,23 @@
-import { Container } from "reactstrap";
-import { useAuthState } from "../utils/AuthContext";
+import { Container, Button } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
 import Scroll from "./Scroll";
 
 const Dash = () => {
+    const dispatch = useAuthDispatch();
     const userDetails = useAuthState();
-    console.log("in dash", userDetails);
-    console.log("user", userDetails.user);
-    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("user in localStorage", storedUser);
+    const history = useHistory();
+    console.log("in dash ~ currentUser", userDetails.user);
+
+    const handleLogout = () => {
+        logout(dispatch);
+        history.push("/");
+    }
+
     return <Container>
         <div>This is where your dashboard will go.</div>
-        <p>Welcome {userDetails.user}</p>
+        <p>Welcome {userDetails.user.fullName}</p>
+        <Button onClick={handleLogout}>Logout</Button>
         <Scroll />
     </Container>
 };

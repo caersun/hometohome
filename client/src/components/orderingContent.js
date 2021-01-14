@@ -7,13 +7,8 @@ export class AppContextProvider extends React.Component {
     user_id: '',
     user_name: '',
     user_type: '',
-    room_id: '',
-    room_name: '',
   };
 
-  constructor(props) {
-    super(props);
-  }
 
   setRoom = (id, name) => {
     this.setState({
