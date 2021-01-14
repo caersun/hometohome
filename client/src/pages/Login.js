@@ -33,7 +33,7 @@ function Login() {
         }).then(res => {
             console.log("login.js ~ res", res);
             // FIXME: the state is not changing and user is not being set
-            console.log("did the state change?", UserDetails);
+            // console.log("did the state change?", UserDetails);
             history.push("/dash");
         }).catch(err => console.log(err));
     };
