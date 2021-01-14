@@ -1,8 +1,8 @@
 import React from 'react';
-import {Container,  Col, Row, Dropdown, DropdownButton, Image, Form,  Button } from "react-bootstrap";
+import {Container,  Col, Row, Dropdown, DropdownButton, Image, Form, Button } from "react-bootstrap";
 import photo from "../components/images/MyPicture.jfif"; // need to be actual picture of user
 
-function Profile() {
+function Listings() {
 
 
     return (
@@ -10,27 +10,22 @@ function Profile() {
       <Container d-flex flex-row space-between>
 
         <Row>
-          <Col md={{offset: 3}}>
-              <h1>Home to Home Cook Profile</h1> 
+          <Col md={{offset: 4}}>
+              <h1>Home to Home</h1> 
           </Col>
         </Row>
 
 
         <Row>
-          <Col md={{offset:4}}>
-          <h2 className="displayuser">Welcome Emmanuel</h2>  {/* needs to be actual name of user {props.firstName}*/}
+          <Col md={{offset:4}}>  {/*how do I center this*/}
+          <h2 className="displayuser">Add a listing</h2>  
           </Col>
         </Row>
         
-        <Row>
-          <Col xs={11}>
-            <h5 class="text-center">aaa@gmail.com</h5>  {/* needs to be actual email of user {props.email}*/}
-          </Col>
-        </Row>
         
         <Row className="justify-content-center">
           <Col xs={2}>
-            <Image className="img" src={photo} alt="Emmanuel Durand"  width="50" height="50" roundedCircle /> {/* needs to be actual picture of user src={props.picture} */}
+            <Image className="img" src={photo} alt="Emmanuel Durand"  width="50" height="50" roundedCircle /> {/* needs to be actual picture of user src={props.picture} and put at the right top corner*/}
           </Col>
         </Row>
         
@@ -66,7 +61,7 @@ function Profile() {
                 <div class="mb-auto p-2 bd-highlight">
 
                   <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Meal Description with price</Form.Label>
+                    <Form.Label>Meal Description</Form.Label> {/* adding question mark with bubble that gives more info about what is required*/}
                     <Form.Control size="lg" as="textarea" rows={5} />
                   </Form.Group>
 
@@ -108,4 +103,4 @@ function Profile() {
 
 }
 
-export default Profile;
+export default Listings;
