@@ -16,7 +16,6 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/dash" component={Dash} />
-          {/* <Route exact path="/dash" component={Dash} /> */}
         </Switch>
       </Router>
     </AuthProvider>

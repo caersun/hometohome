@@ -2,16 +2,16 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { login, useAuthDispatch, useAuthState } from "../utils/AuthContext";
+import { login, useAuthDispatch } from "../utils/AuthContext";
 
 function Login() {
     const [loginUser, setLoginUser] = useState({});
     const history = useHistory();
     const dispatch = useAuthDispatch();
-    const userDetails = useAuthState();
+    // const userDetails = useAuthState();
     // const { loading, errorMessage } = useAuthState();
 
-    console.log("logged in?", userDetails);
+    // console.log("logged in?", userDetails);
 
     const handleInputChange = event => {
         const { name, value } = event.target;

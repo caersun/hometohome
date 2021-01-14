@@ -1,13 +1,13 @@
 import { Jumbotron, Button } from "reactstrap";
 import { useHistory } from "react-router-dom";
-import { useAuthState } from "../utils/AuthContext";
+// import { useAuthState } from "../utils/AuthContext";
 
 // TODO: Need styling for landing. Think https://doordash.com or https://pizzahut.com
 
 const Landing = () => {
     const history = useHistory();
-    const userDetails = useAuthState();
-    console.log("logged in rn?", userDetails);
+    // const userDetails = useAuthState();
+    // console.log("logged in?", userDetails);
     return <div>
         <Jumbotron>
             <h1 className="display-3">Home to Home</h1>
