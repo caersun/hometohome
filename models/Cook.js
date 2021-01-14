@@ -1,9 +1,9 @@
-const bcrypt = require("bcryptjs"); //hashes the password 
+// const bcrypt = require("bcryptjs"); 
 // const LocalStrategy = require("passport-local").Strategy;
 // const passport = require("passport");
 
 module.exports = (sequelize, DataTypes) => {
-	const User = sequelize.define("User", {
+	const Cook = sequelize.define("Cook", {
 		// firstName: {
 		// 	type: DataTypes.STRING,
 		// 	// allowNull: false
@@ -28,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		cook: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: false
-		}
 	});
 
 	// User.prototype.validatePassword = function (password) {
@@ -43,10 +39,9 @@ module.exports = (sequelize, DataTypes) => {
 	// 	user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
 	// });
 
-	User.associate = db => {
-		User.hasMany(db.Listing, { onDelete: "cascade" });
-		// User.hasMany(db.Order, { onDelete: "cascade" });
+	Cook.associate = db => {
+		Cook.hasMany(db.Listing, { onDelete: "cascade" });
 	};
 
-	return User;
+	return Cook;
 };

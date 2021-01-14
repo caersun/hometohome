@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Listing = sequelize.define("Listing", {
-        title: {
+        food: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -18,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
+        previewImage: {
+            type: DataTypes.STRING
+        },
+        quantity: {
+            type: DataTypes.INTEGER,
+            defaultValue: 1
+        },
         purchased: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
@@ -25,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Listing.associate = db => {
-        Listing.belongsTo(db.User, { foreignKey: { allowNull: false }});
+        Listing.belongsTo(db.Cook, { foreignKey: { allowNull: false }});
     }
 
     return Listing;
