@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 // why isn't this showing up :((
 // import Home from "./pages/Home";
 import HomePage from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </Router>
   );

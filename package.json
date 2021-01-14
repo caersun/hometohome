@@ -34,6 +34,7 @@
         "mysql2": "^2.2.5",
         "passport": "^0.4.1",
         "passport-local": "^1.0.0",
+        "react-bootstrap-validation": "^0.1.11",
         "sequelize": "^6.3.5"
     }
 }
