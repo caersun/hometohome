@@ -6,6 +6,8 @@ const Dash = () => {
     const userDetails = useAuthState();
     console.log("in dash ~ currentUser", userDetails.user);
 
+    
+
     return <Container>
         <div>This is where your dashboard will go.</div>
         <p>Welcome {userDetails.user.fullName}</p>

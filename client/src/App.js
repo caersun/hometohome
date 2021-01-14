@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Landing from "./pages/Landing";
 import Dash from "./pages/Dash";
 import { AuthProvider } from "./utils/AuthContext";
+import PrivateRoute from "./routers/PrivateRoute";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          {/* <PrivateRoute exact path="/dash" component={Dash} /> */}
-          <Route exact path="/dash" component={Dash} />
+          <PrivateRoute exact path="/dash" component={Dash} />
+          {/* <Route exact path="/dash" component={Dash} /> */}
         </Switch>
       </Router>
     </AuthProvider>
