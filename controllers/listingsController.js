@@ -2,13 +2,12 @@ const db = require("../models");
 
 const listingsController = {
     findAll: (req, res) => {
-        console.log("in listingsController ~ findAll ~ req", req);
         db.Listing
-            .findAll({ include: { model: db.User } })
+            .findAll({ include: db.Cook })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.status(422).json(err)); 
     },
-    findAllByUser: (req, res) => {
+    findAllByCook: (req, res) => {
         db.Listing
             .findAll({ where: { CookId: req.params.id }})
             .then(dbModel => res.json(dbModel))

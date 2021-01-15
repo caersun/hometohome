@@ -16,29 +16,32 @@ const API = {
     getCooks: () => {
         return axios.get(domain + "/api/cooks");
     },
-    getCook: () => {
-        return axios.get(domain + "/api/cooks/:id");
+    getCook: (id) => {
+        return axios.get(domain + "/api/cooks/" + id);
     },
-    updateCook: () => {
-        return axios.put(domain + "/api/cooks/:id");
+    updateCook: (id) => {
+        return axios.put(domain + "/api/cooks/" + id);
     },
-    deleteCook: () => {
-        return axios.delete(domain + "/api/cooks/:id");
+    deleteCook: (id) => {
+        return axios.delete(domain + "/api/cooks/" + id);
     },
     getListings: () => {
         return axios.get(domain + "/api/listings");
     },
-    getListing: () => {
-        return axios.get(domain + "/api/listings/:id");
+    getListing: (id) => {
+        return axios.get(domain + "/api/listings/" + id);
+    },
+    getListingsByCook: (id) => {
+        return axios.get(domain + "/api/listings/cook/" + id);
     },
     createListing: (listingInfo) => {
         return axios.post(domain + "/api/listings", listingInfo);
     },
-    updateListing: () => {
-        return axios.put(domain + "/api/listings/:id");
+    updateListing: (id) => {
+        return axios.put(domain + "/api/listings/" + id);
     },
-    deleteListing: () => {
-        return axios.delete(domain + "/api/listings/:id");
+    deleteListing: (id) => {
+        return axios.delete(domain + "/api/listings/" + id);
     }
 };
 

@@ -1,10 +1,12 @@
 import { Button, Container, Card, CardBody, Form, Row, Col, FormGroup, Label, Input } from "reactstrap";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useAuthState } from "../utils/AuthContext";
 import API from "../utils/API";
 
 const CreateListing = () => {
     const userDetails = useAuthState();
+    const history = useHistory();
     const [createListing, setCreateListing] = useState({
         food: "",
         price: 0,
@@ -27,6 +29,7 @@ const CreateListing = () => {
             }).then(data => {
                     setCreateListing({});
                     console.log("in CreateListing.js ~ handleSubmit ~ data", data);
+                    history.push("/dash");
             }).catch(err => console.log(err));
         };
     }; 
@@ -35,7 +38,7 @@ const CreateListing = () => {
     return (<Container>
         <Card>
             <CardBody>
-                <h4 className="text-center mb-3">What are you listing?</h4>
+                <h4 className="text-center mb-3">What's cookin'?</h4>
                 <Form>
                     <Row>
                         <Col>

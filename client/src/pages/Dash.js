@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Container, Col, Row, Button } from "reactstrap";
 import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
-import Listings from "../components/Listing/Listings";
+import CookListings from "../components/Listing/CookListings";
 // import Scroll from "./Scroll";
 
 const Dash = () => {
@@ -51,7 +51,7 @@ const Dash = () => {
                         <br />
                         <Button onClick={createListing}>Create New Listing</Button>
                         <br /><br />
-                        <Listings />
+                        <CookListings />
                     </Container>
                 </Col>
             </Row>

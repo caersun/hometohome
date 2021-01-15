@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import { Jumbotron, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from "reactstrap";
 import Listings from "../components/Listing/Listings";
-// import API from "../utils/API";
 
 const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-
-    // const loadListings = () => {
-    //     API.findAllL
-    // }
 
     return (<div>
         <Navbar color="light" light expand="md">

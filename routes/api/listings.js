@@ -14,6 +14,9 @@ router.route("/")
     .get(listingsController.findAll)
     .post(listingsController.create);
 
+router.route("/cook/:id")
+    .get(listingsController.findAllByCook);
+
 router.route("/:id")
     .get(listingsController.findById)
     .put(listingsController.update)
