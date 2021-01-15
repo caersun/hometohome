@@ -26,7 +26,8 @@ passport.use(
         } else {
           const userPassword = generateHash(password);
           const data = {
-            fullName: req.body.fullName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: email,
             password: userPassword,
           };

@@ -4,18 +4,18 @@
 
 module.exports = (sequelize, DataTypes) => {
 	const Cook = sequelize.define("Cook", {
-		// firstName: {
-		// 	type: DataTypes.STRING,
-		// 	// allowNull: false
-		// },
-		// lastName: {
-		// 	type: DataTypes.STRING,
-		// 	// allowNull: false
-		// },
-		fullName: {
+		firstName: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		lastName: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		// fullName: {
+		// 	type: DataTypes.STRING,
+		// 	allowNull: false
+		// },
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,

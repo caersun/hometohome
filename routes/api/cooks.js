@@ -4,7 +4,7 @@ const cooksController = require("../../controllers/cooksController");
 // matches with "/api/cooks"
 router.route("/")
     .get(cooksController.findAll)
-    .post(cooksController.create);
+    // .post(cooksController.create);
 
 // matches with "/api/cooks/:id"
 router.route("/:id")

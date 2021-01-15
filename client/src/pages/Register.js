@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap"
+import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
 import API from "../utils/API";
 
 // TODO: Need logic to compare passwords within form
@@ -17,9 +17,10 @@ function Register() {
 
     const handleRegistration = (event) => {
         event.preventDefault();
-        if (registerUser.fullName && registerUser.email && registerUser.password) {
+        if (registerUser.firstName && registerUser.lastName && registerUser.email && registerUser.password) {
             API.register({
-                fullName: registerUser.fullName,
+                firstName: registerUser.firstName,
+                lastName: registerUser.lastName,
                 email: registerUser.email,
                 password: registerUser.password
             }).then(() => {
@@ -32,9 +33,37 @@ function Register() {
     return <Container>
         <Card>
             <CardBody>
-                <h1 className="text-center mb-3">Register</h1>
+                <h2 className="text-center mb-3">Become a Homecook</h2>
                 <Form>
-                    <FormGroup>
+                    <Row>
+                        <Col>
+                            <FormGroup>
+                                <Label for="firstName">First Name</Label>
+                                <Input 
+                                    className="form-control text-center"
+                                    type="text"
+                                    name="firstName"
+                                    id="firstName" 
+                                    placeholder="First Name"
+                                    onChange={handleInputChange}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col>
+                            <FormGroup>
+                                <Label for="lastName">Last Name</Label>
+                                <Input 
+                                    className="form-control text-center"
+                                    type="text"
+                                    name="lastName"
+                                    id="lastName" 
+                                    placeholder="Last Name"
+                                    onChange={handleInputChange}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    {/* <FormGroup>
                         <Label for="fullName">Full Name</Label>
                         <Input 
                             className="form-control text-center"
@@ -44,7 +73,7 @@ function Register() {
                             placeholder="Full Name"
                             onChange={handleInputChange}
                         />
-                    </FormGroup>
+                    </FormGroup> */}
                     <FormGroup>
                         <Label for="email">Email</Label>
                         <Input 
