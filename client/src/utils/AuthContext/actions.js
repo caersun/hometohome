@@ -4,7 +4,7 @@ export async function login(dispatch, loginPayload) {
     try {
         dispatch({ type: "REQUEST_LOGIN" });
         let response = await API.login(loginPayload);
-        console.log("actions.js ~ response from API.login", response);
+        // console.log("actions.js ~ response from API.login", response);
         if (response.data) {
             dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
             localStorage.setItem("currentUser", JSON.stringify(response.data));

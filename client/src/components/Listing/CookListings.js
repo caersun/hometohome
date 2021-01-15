@@ -12,7 +12,7 @@ const CookListings = () => {
         API.getListingsByCook(userDetails.user.id)
             .then(res => {
                 setAllCookListings(res.data);
-                console.log("allCookListings:", res.data);
+                // console.log("allCookListings:", res.data);
             })
             .catch(err => console.log(err));
     }, [userDetails.user.id]);

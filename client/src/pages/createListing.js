@@ -28,7 +28,7 @@ const CreateListing = () => {
                 CookId: userDetails.user.id
             }).then(data => {
                     setCreateListing({});
-                    console.log("in CreateListing.js ~ handleSubmit ~ data", data);
+                    // console.log("in CreateListing.js ~ handleSubmit ~ data", data);
                     history.push("/dash");
             }).catch(err => console.log(err));
         };
