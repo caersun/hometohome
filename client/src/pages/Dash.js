@@ -1,43 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Container, Col, Row, Button } from "reactstrap";
-import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
+import { Container, Col, Row, Button } from "reactstrap";
+// import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
 import CookListings from "../components/Listing/CookListings";
 // import Scroll from "./Scroll";
 
 const Dash = () => {
-    const dispatch = useAuthDispatch();
-    const userDetails = useAuthState();
     const history = useHistory();
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
-
-    console.log("in dash ~ currentUser", userDetails.user);
-
-    const handleLogout = () => {
-        logout(dispatch);
-        history.push("/");
-    };
 
     const createListing = () => {
         history.push("/createListing")
-    }
+    };
 
-    return <div>
-        <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">hometohome</NavbarBrand>
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                    <NavItem>
-                        <Button onClick={handleLogout}>Logout</Button>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/cart">Cart</NavLink>
-                    </NavItem>
-                </Nav>
-            </Collapse>
-        </Navbar>
+    return (
         <Container>
             <Row>
                 <Col xs="12" md="3">
@@ -56,7 +31,7 @@ const Dash = () => {
                 </Col>
             </Row>
         </Container>
-    </div>
+    )
 };
 
 export default Dash;

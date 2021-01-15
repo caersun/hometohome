@@ -8,7 +8,10 @@ const Listings = () => {
 
     useEffect(() => {
         API.getListings()
-            .then(res => setAllListings(res.data))
+            .then(res => {
+                setAllListings(res.data);
+                console.log("Listings ~ res.data:", res.data);
+            })
             .catch(err => console.log(err));
     }, []);
 

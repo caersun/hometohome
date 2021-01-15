@@ -24,7 +24,7 @@ function Login() {
             email: loginUser.email,
             password: loginUser.password
         }).then(res => {
-            console.log("login.js ~ res", res);
+            // console.log("login.js ~ res", res);
             history.push("/dash");
         }).catch(err => console.log(err));
     };

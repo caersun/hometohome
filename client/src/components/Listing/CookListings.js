@@ -15,7 +15,7 @@ const CookListings = () => {
                 console.log("allCookListings:", res.data);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [userDetails.user.id]);
 
     return (
         <Container fluid>
