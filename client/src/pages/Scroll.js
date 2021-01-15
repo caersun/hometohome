@@ -1,6 +1,6 @@
 // import Component from "react";
 import { Container, Row, Col } from "reactstrap";
-import ListingCard from "../components/ListingCard";
+import ListingCard from "../components/Listing/ListingCard";
 
 function Scroll() {
         // TODO: Need seed data to populate database similar to this

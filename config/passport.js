@@ -17,7 +17,7 @@ passport.use(
         console.log("let's check what being passed in", password);
         return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
       };
-      db.User.findOne({ where: { email: email } }).then(function (user, err) {
+      db.Cook.findOne({ where: { email: email } }).then(function (user, err) {
         if (err) {
           return done(err);
         }
@@ -26,12 +26,13 @@ passport.use(
         } else {
           const userPassword = generateHash(password);
           const data = {
-            fullName: req.body.fullName,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: email,
             password: userPassword,
           };
 
-          db.User.create(data).then(function (newUser, created) {
+          db.Cook.create(data).then(function (newUser, created) {
             if (!newUser) {
               return done(null, false);
             }
@@ -59,7 +60,7 @@ passport.use(
         return bCrypt.compareSync(password, userpw);
       };
 
-      db.User.findOne({ where: { email: email } })
+      db.Cook.findOne({ where: { email: email } })
         .then(function (user) {
           if (!user) {
             return done(null, false, { message: "No matching email" });

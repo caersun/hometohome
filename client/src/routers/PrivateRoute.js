@@ -8,7 +8,9 @@ const PrivateRoute = (props) => {
     let isAuthenticated = false;
 
     function isLoggedIn() {
-        if (userDetails.user === undefined) {
+        console.log("userDetails", userDetails);
+        if (!userDetails.user) {
+            console.log("userDetails", userDetails.user);
             return;
         }
         isAuthenticated = true;
