@@ -17,7 +17,7 @@ const Dash = () => {
     return <Container>
 
     <div> This is where your dashboard will go. </div>
-        <p>Welcome Back!  Your Home Cooked Meal Is Waiting! {userDetails.user}</p>
+        <p>Welcome Back!  Your Home Cooked Meal Is Waiting! {userDetails.user.fullname}</p>
         <Scroll />
     </Container>
 };
