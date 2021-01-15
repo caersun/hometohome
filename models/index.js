@@ -14,7 +14,7 @@ const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
-config.password = process.env.DB_PASSWORD || config.password;
+config.password = process.env.DB_PASS || config.password;
 const db = {};
 
 let sequelize;
