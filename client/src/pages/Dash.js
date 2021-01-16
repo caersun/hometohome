@@ -2,6 +2,7 @@
 import { useHistory } from "react-router-dom";
 import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from "reactstrap";
 // import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
+import CookInfo from "../components/CookInfo";
 import CookListings from "../components/CookListings";
 // import Scroll from "./Scroll";
 import { useAuthState } from "../utils/AuthContext";
@@ -43,7 +44,7 @@ const Dash = () => {
             <Row>
                 <Col xs="12" md="3">
                     <Container fluid>
-                        <div>this is where the user info will go</div>
+                        <CookInfo />
                     </Container>
                 </Col>
                 <Col xs="12" md="9">

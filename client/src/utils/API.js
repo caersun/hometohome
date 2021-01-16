@@ -19,8 +19,8 @@ const API = {
     getCook: (id) => {
         return axios.get(domain + "/api/cooks/" + id);
     },
-    updateCook: (id) => {
-        return axios.put(domain + "/api/cooks/" + id);
+    updateCook: (id, updateData) => {
+        return axios.put(domain + "/api/cooks/" + id, updateData);
     },
     deleteCook: (id) => {
         return axios.delete(domain + "/api/cooks/" + id);
@@ -37,8 +37,8 @@ const API = {
     createListing: (listingInfo) => {
         return axios.post(domain + "/api/listings", listingInfo);
     },
-    updateListing: (id) => {
-        return axios.put(domain + "/api/listings/" + id);
+    updateListing: (id, updateData) => {
+        return axios.put(domain + "/api/listings/" + id, updateData);
     },
     deleteListing: (id) => {
         return axios.delete(domain + "/api/listings/" + id);

@@ -35,6 +35,24 @@ export const AuthReducer = (initialState, action) => {
                 loading: false,
                 errorMessage: action.error
             };
+        // case "REQUEST_UPDATE":
+        //     return {
+        //         ...initialState,
+        //         loading: true
+        //     };
+        // case "UPDATE_SUCCESS":
+        //     console.log("in reducer ~ update_success ~ action.payload", action.payload);
+        //     return {
+        //         ...initialState,
+        //         user: action.payload,
+        //         loading: false
+        //     };
+        // case "UPDATE_ERROR":
+        //     return {
+        //         ...initialState,
+        //         loading: false,
+        //         errorMessage: action.error
+        //     };
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
     }

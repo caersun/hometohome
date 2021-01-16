@@ -40,10 +40,11 @@ const NavigationBar = () => {
                     { loggedIn 
                         ? <>
                             <NavItem>
-                                    <Button onClick={handleLogout}>Logout</Button>
+                                <Button onClick={handleLogout}>Logout</Button>
                             </NavItem> 
                             <NavItem>
-                                <NavLink href="/dash">Dashboard</NavLink>
+                                {/* <NavLink href="/dash">Dashboard</NavLink> */}
+                                <Button onClick={() => history.push("/dash")}>Dash</Button>
                             </NavItem>
                         </>
                         : <>
