@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
+import { FormText, Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
 import API from "../utils/API";
 
 // TODO: Need logic to compare passwords within form
 // TODO: Show frontend error if a user attempts to signup twice
-
+// TODO: Now showing full register info? Probably in register thing
 function Register() {
     const [registerUser, setRegisterUser] = useState({});
     const history = useHistory();
@@ -22,7 +22,10 @@ function Register() {
                 firstName: registerUser.firstName,
                 lastName: registerUser.lastName,
                 email: registerUser.email,
-                password: registerUser.password
+                password: registerUser.password,
+                specialties: registerUser.specialties,
+                bio: registerUser.bio,
+                cookImg: registerUser.cookImg
             }).then(() => {
                 setRegisterUser({});
                 history.push("/login");
@@ -106,6 +109,41 @@ function Register() {
                             onChange={e => setRegisterPassword(e.target.value)}
                         />
                     </FormGroup> */}
+                    <FormGroup>
+                        <Label for="specialties">Your Cooking Specialties</Label>
+                        <Input 
+                            className="form-control text-center" 
+                            type="text"
+                            name="specialties"
+                            id="specialties" 
+                            placeholder="Southern, Comfort, Italian, Mexican, etc."
+                            onChange={handleInputChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="bio">Short Bio</Label>
+                        <Input 
+                            className="form-control text-center" 
+                            type="text"
+                            name="bio"
+                            id="bio" 
+                            placeholder="Write something for prospective buyers"
+                            onChange={handleInputChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="cookImg">Cook Profile Image</Label>
+                        <Input 
+                            className="form-control text-center" 
+                            type="file"
+                            name="cookImg"
+                            id="cookImg" 
+                            onChange={handleInputChange}
+                        />
+                        <FormText color="muted">
+                            Upload a profile image. Buyer's trust cooks they can see!
+                        </FormText>
+                    </FormGroup>
                     <Button 
                         className="btn btn-primary btn-block mt-5"
                         type="submit"

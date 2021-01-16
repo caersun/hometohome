@@ -23,10 +23,6 @@ const CookInfo = () => {
         setUpdateInfo({ ...updateInfo, [name]: value });
     };
 
-    // const updateCalls = () => {
-        
-    // };
-
     const handleCookUpdate = event => {
         event.preventDefault();
 
@@ -57,11 +53,11 @@ const CookInfo = () => {
     return (
         <div>
             <Card>
-                {/* <CardImg top width="100%" src={cookInfo.src} alt={cookInfo.firstName} /> */}
+                <CardImg top width="100%" src={cookInfo.cookImg} alt={cookInfo.firstName} />
                 <CardBody>
                     <CardTitle tag="h5">{cookInfo.firstName} {cookInfo.lastName}</CardTitle>
-                    {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.specialities}</CardSubtitle> */}
-                    {/* <CardText>{cookInfo.bio}</CardText> */}
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.specialities}</CardSubtitle>
+                    <CardText>{cookInfo.bio}</CardText>
                     <Button onClick={toggle}>Edit</Button>
                 </CardBody>
             </Card>
