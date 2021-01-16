@@ -4,7 +4,18 @@ import ListingCard from "./ListingCard";
 import { useAuthState } from "../utils/AuthContext";
 import API from "../utils/API";
 
+// import { connect } from "react-redux";
+
 const CookListings = () => {
+    // console.log("CookListings ~ incoming products:", products);
+    // return (
+    //     <Container fluid>
+    //         {products.map(product => (
+    //             <ListingCard key={product.id} productData={product} />
+    //         ))}
+    //     </Container>
+    // )
+
     const [allCookListings, setAllCookListings] = useState([]);
     const userDetails = useAuthState();
 
@@ -22,11 +33,11 @@ const CookListings = () => {
             {allCookListings.map(listing => (
                 <Row key={listing.id}>
                     <Col>
-                        <ListingCard 
-                            previewImage={listing.previewImage}
-                            food={listing.food}
-                            price={listing.price}
-                            description={listing.description}
+                        <ListingCard productData={listing}
+                            // previewImage={listing.previewImage}
+                            // food={listing.food}
+                            // price={listing.price}
+                            // description={listing.description}
                         />
                     </Col>
                 </Row>
@@ -35,4 +46,11 @@ const CookListings = () => {
     );
 };
 
+// const mapStateToProps = state => {
+//     return {
+//         products: state.shop.products
+//     }
+// };
+
 export default CookListings;
+// export default connect(mapStateToProps)(CookListings);

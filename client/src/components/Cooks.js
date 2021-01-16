@@ -25,7 +25,7 @@ const Cooks = () => {
                         <Cook 
                            firstName={cook.firstName}
                            lastName={cook.lastName}
-                           listings={cook.Listings}
+                        //    listings={cook.Listings}
                         />
                     </Col>
                 )))
