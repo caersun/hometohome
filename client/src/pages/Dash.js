@@ -2,8 +2,8 @@
 import { useHistory } from "react-router-dom";
 import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from "reactstrap";
 // import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
-import CookInfo from "../components/CookInfo";
-import CookListings from "../components/CookListings";
+import CookInfo from "../components/Cook/CookInfo";
+import CookListings from "../components/Cook/CookListings";
 // import Scroll from "./Scroll";
 import { useAuthState } from "../utils/AuthContext";
 import API from "../utils/API";

@@ -1,21 +1,12 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
-import ListingCard from "./ListingCard";
-import { useAuthState } from "../utils/AuthContext";
-import API from "../utils/API";
+import CookListingCard from "./CookListingCard";
+import { useAuthState } from "../../utils/AuthContext";
+import API from "../../utils/API";
 
 // import { connect } from "react-redux";
 
 const CookListings = () => {
-    // console.log("CookListings ~ incoming products:", products);
-    // return (
-    //     <Container fluid>
-    //         {products.map(product => (
-    //             <ListingCard key={product.id} productData={product} />
-    //         ))}
-    //     </Container>
-    // )
-
     const [allCookListings, setAllCookListings] = useState([]);
     const userDetails = useAuthState();
 
@@ -33,12 +24,7 @@ const CookListings = () => {
             {allCookListings.map(listing => (
                 <Row key={listing.id}>
                     <Col>
-                        <ListingCard productData={listing}
-                            // previewImage={listing.previewImage}
-                            // food={listing.food}
-                            // price={listing.price}
-                            // description={listing.description}
-                        />
+                        <CookListingCard listing={listing} />
                     </Col>
                 </Row>
             ))} 

@@ -1,5 +1,5 @@
 import { Jumbotron } from "reactstrap";
-import Cooks from "../components/Cooks";
+import Cooks from "../components/Kitchen/Cooks";
 // import { useAuthState } from "../utils/AuthContext";
 
 const Home = () => {

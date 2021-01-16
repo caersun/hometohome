@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, Row, Col, FormGroup, Label, Input } from "reactstrap";
-import { useAuthState } from "../utils/AuthContext";
-import API from "../utils/API";
+import { useAuthState } from "../../utils/AuthContext";
+import API from "../../utils/API";
 
 const CookInfo = () => {
     const [cookInfo, setCookInfo] = useState({});

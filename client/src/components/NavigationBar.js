@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from "reactstrap";
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button, UncontrolledPopover, PopoverBody } from "reactstrap";
+import Cart from "./Cart/Cart";
 import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
-
 import { connect } from "react-redux";
 
 const NavigationBar = ({ cart }) => {
-    const [cartCount, setCartCount] = useState(0);
-
     const [isOpen, setIsOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [cartCount, setCartCount] = useState(0);
     const dispatch = useAuthDispatch();
     const history = useHistory();
     const userDetails = useAuthState();
@@ -19,17 +18,6 @@ const NavigationBar = ({ cart }) => {
         logout(dispatch);
         history.replace("/");
     }
-
-    // const isLoggedIn = () => {
-    //     if (!userDetails.user) {
-    //         setLoggedIn(false);
-    //         console.log("Navbar ~ isLoggedIn", loggedIn);
-    //         return;
-    //     };
-    //     setLoggedIn(true);
-    //     console.log("Navbar ~ isLoggedIn", loggedIn);
-    //     return;
-    // }
 
     useEffect(() => {
         let count = 0;
@@ -72,7 +60,13 @@ const NavigationBar = ({ cart }) => {
                         </>       
                     }
                     <NavItem>
-                        <NavLink href="/cart">Cart ({cartCount})</NavLink>
+                        <Button id="cartLegacy" type="button">Cart ({cartCount})</Button>
+                        <UncontrolledPopover trigger="legacy" placement="bottom" target="cartLegacy">
+                            {/* <PopoverHeader>Ordering</PopoverHeader> */}
+                            <PopoverBody>
+                                <Cart />
+                            </PopoverBody>
+                        </UncontrolledPopover>
                     </NavItem>
                 </Nav>
             </Collapse>
