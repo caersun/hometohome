@@ -4,17 +4,17 @@
 // window.initMap = function(lattitude, longitude) {
   // Initialize and add the map
   function initMap(lattitude, longitude) {
-    // The location of Trail Location
-    var trailLocation = {lat: 30.3451668, lng: -97.9260464};
+    // The location of Parameter Location
+    var ParameterLocation = {lat: 30.3451668, lng: -97.9260464};
     if (lattitude && longitude){
-       trailLocation = {lat: lattitude, lng: longitude};
+       parameterLocation = {lat: lattitude, lng: longitude};
     }
     
     // The map, centered at Trail Location
     var map = new google.maps.Map(
-        document.getElementById('gMap'), {zoom: 12, center: trailLocation});
-    // The marker, positioned at Trail Location
-    var marker = new google.maps.Marker({position: trailLocation, map: map});
+        document.getElementById('gMap'), {zoom: 12, center: parameterLocation});
+    // The marker, positioned at Parameter Location
+    var marker = new google.maps.Marker({position: parameterLocation, map: map});
   // }
 };
 

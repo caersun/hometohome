@@ -1,16 +1,17 @@
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
 
 const ListingCard = props => {
     return (
         <Card>
-            <CardImg top width="100%" src={props.listingImage} alt={props.listingTitle} />
-            <CardBody>
-                <CardTitle tag="h5">{props.listingTitle}</CardTitle>
+            <CardImg top width="100%" src={props.previewImage} alt={props.food} />
+            <CardBody className="text-center">
+                <CardTitle tag="h5" >{props.food}</CardTitle>
                 <div>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">{props.shortDescription}</CardSubtitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted float-end">{props.price}</CardSubtitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted float-end">{props.cook}</CardSubtitle>
+                    {/* <CardSubtitle tag="h6">Made with love by Cook</CardSubtitle> */}
+                    <CardSubtitle tag="h6" className="mb-2 text-muted float-end">${props.price}</CardSubtitle>
                 </div>
+                <CardText>{props.description}</CardText>
+                <Button>Add to Cart</Button>
             </CardBody>
         </Card>
     )
