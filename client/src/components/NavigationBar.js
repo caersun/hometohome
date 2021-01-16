@@ -5,11 +5,11 @@ import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
 
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
     const [loggedIn, setLoggedIn] = useState(false);
     const dispatch = useAuthDispatch();
     const history = useHistory();
     const userDetails = useAuthState();
+    const toggle = () => setIsOpen(!isOpen);
 
     const handleLogout = () => {
         logout(dispatch);
@@ -38,12 +38,14 @@ const NavigationBar = () => {
             <Collapse isOpen={isOpen} navbar>
                 <Nav className="ml-auto" navbar>
                     { loggedIn 
-                        ? 
-                        <NavItem>
-                            {/* <NavLink href="/"> */}
-                                <Button onClick={handleLogout}>Logout</Button>
-                            {/* </NavLink> */}
-                        </NavItem> 
+                        ? <>
+                            <NavItem>
+                                    <Button onClick={handleLogout}>Logout</Button>
+                            </NavItem> 
+                            <NavItem>
+                                <NavLink href="/dash">Dashboard</NavLink>
+                            </NavItem>
+                        </>
                         : <>
                             <NavItem>
                                 <NavLink href="/signup">Become a Homecook</NavLink>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import ListingCard from "./ListingCard";
-import { useAuthState } from "../../utils/AuthContext";
-import API from "../../utils/API";
+import { useAuthState } from "../utils/AuthContext";
+import API from "../utils/API";
 
 const CookListings = () => {
     const [allCookListings, setAllCookListings] = useState([]);

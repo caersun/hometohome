@@ -1,5 +1,5 @@
 import { Jumbotron } from "reactstrap";
-import Listings from "../components/Listing/Listings";
+import Cooks from "../components/Cooks";
 // import { useAuthState } from "../utils/AuthContext";
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
             <h1 className="display-3">hometohome</h1>
             <p className="lead">From your neighbors to you, enjoy delicious homecooked meals.</p>
         </Jumbotron>
-        <Listings />
+        <Cooks />
     </div>)
 };
 

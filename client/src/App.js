@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PrivateRoute from "./routers/PrivateRoute";
+import NavigationBar from "./components/NavigationBar";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-// import Landing from "./pages/Landing";
 import Dash from "./pages/Dash";
-import NavigationBar from "./components/NavigationBar";
 import { AuthProvider } from "./utils/AuthContext";
-import PrivateRoute from "./routers/PrivateRoute";
-import CreateListing from "./pages/createListing";
 
 function App() {
   return (
@@ -20,7 +18,6 @@ function App() {
           <Route exact path="/signup" component={Register} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/dash" component={Dash} />
-          <PrivateRoute exact path="/createListing" component={CreateListing} />
         </Switch>
       </Router>
     </AuthProvider>

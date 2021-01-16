@@ -12,7 +12,7 @@ const cooksController = {
     //         .catch(err => res.status(422).json(err));
     // },
     findAll: (req, res) => {
-        console.log("in cooksController ~ findAll ~ req", req);
+        // console.log("in cooksController ~ findAll ~ req", req);
         db.Cook
             // is this how to include Listing?
             .findAll({ include: { model: db.Listing } })
