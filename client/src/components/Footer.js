@@ -1,1 +1,1 @@
-// TODO: Need a footer for whole page
+import { Container, Row, Col } from "reactstrap";

@@ -28,6 +28,16 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
+		specialties: {
+			type: DataTypes.STRING,
+			defaultValue: "Home Cookin'"
+		},
+		bio: {
+			type: DataTypes.STRING
+		},
+		cookImg: {
+			type: DataTypes.STRING,
+		}
 	});
 
 	// User.prototype.validatePassword = function (password) {
