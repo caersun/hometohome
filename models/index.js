@@ -1,11 +1,3 @@
-// export all models here
-
-// mongoose
-// module.exports = {
-//     User: require("./User"),
-// };
-
-// sequelize
 "use strict";
 
 const fs = require("fs");

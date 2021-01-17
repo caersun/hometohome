@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3001;
 
 // middleware
 app.use(logger("dev"));
+app.use("/uploads", express.static("uploads"));
 // app.use(compression());
 app.use(cors({ origin: "http://localhost:3000", credentials: true })); //react and server communciation for data transfer //
 app.use(express.urlencoded({ extended: true }));

@@ -1,41 +1,43 @@
 const db = require("../models");
 
-const listingsController = {
+const profileController = {
     findAll: (req, res) => {
-        db.Listing
-            .findAll({ include: db.Cook })
+        db.Profile
+            .findAll({ include: [db.Cook, db.CookImage] })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err)); 
+            .catch(err => res.status(422).json(err));
     },
-    findAllByCook: (req, res) => {
-        db.Listing
-            .findAll({ where: { CookId: req.params.id }})
+    findByCook: (req, res) => {
+        db.Profile.findOne({ 
+            where: { CookId: req.params.id },
+            include: [db.Cook, db.CookImage]
+        })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findById: (req, res) => {
-        db.Listing.findOne({
+        db.Profile.findOne({
             where: { id: req.params.id },
-            include: db.Cook
+            include: [db.Cook, db.CookImage]
         })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     create: (req, res) => {
-        db.Listing.create(req.body)
+        db.Profile.create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     update: (req, res) => {
-        db.Listing.update(req.body, { where: { id: req.params.id } })
+        db.Profile.update(req.body, { where: { id: req.params.id }})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     remove: (req, res) => {
-        db.Listing.destroy({ where: { id: req.listing.id } }) // TODO: Does this work??
+        db.Profile.destroy({ where: { id: req.profile.id } })
             .then(result => res.json({ id: result }))
             .catch(err => res.status(422).json(err));
     }
 };
 
-module.exports = listingsController;
+module.exports = profileController;

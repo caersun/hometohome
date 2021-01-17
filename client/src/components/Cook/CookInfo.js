@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, Row, Col, FormGroup, Label, Input } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, Row, Col, FormGroup, Label, Input, FormText } from "reactstrap";
 import { useAuthState } from "../../utils/AuthContext";
 import API from "../../utils/API";
+// import defaultUserImage from "../../assets/default-user.jpg";
 
 const CookInfo = () => {
     const [cookInfo, setCookInfo] = useState({});
     const [updateInfo, setUpdateInfo] = useState({});
+    // const [uploadImage, setUploadImage] = useState("../../assets/default-user.jpg");
+    // const [multerImage, setMulterImage] = useState({});
     const [modal, setModal] = useState(false);
     const history = useHistory();
     const userDetails = useAuthState();
@@ -16,6 +19,23 @@ const CookInfo = () => {
         const { name, value } = event.target;
         setUpdateInfo({ ...updateInfo, [name]: value });
     };
+
+    // const handleUploadImage = event => {
+    //     // let imageObj = {};
+    //     let imageFormObj = new FormData();
+
+    //     imageFormObj.append("name", "TRYINGPLS");
+    //     imageFormObj.append("img", event.target.files[0]);
+    //     setMulterImage(URL.createObjectURL(event.target.files[0]));
+    //     API.createCookImage(imageFormObj).then((data) => {
+    //         if (data.data.success) {
+    //             alert("Image has been successfully uploaded!");
+    //             console.log("this says we did it!", data);
+    //         }
+    //     }).catch(err => console.log(err));
+        // console.log("cookInfo ~ handleUploadImage ~ imageFormObj:", imageFormObj);
+        // console.log("cookInfo ~ handleUploadImage ~ multerImage:", multerImage);
+    // };
 
     const handleCookUpdate = event => {
         event.preventDefault();
@@ -60,11 +80,11 @@ const CookInfo = () => {
     return (
         <div>
             <Card>
-                <CardImg top width="100%" src={cookInfo.Profile.img} alt={cookInfo.firstName} />
+                {/* <CardImg top width="100%" src={cookInfo.Profile.img} alt={cookInfo.firstName} /> */}
                 <CardBody>
                     <CardTitle tag="h5">{cookInfo.firstName} {cookInfo.lastName}</CardTitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.Profile.specialties}</CardSubtitle>
-                    <CardText>{cookInfo.Profile.bio}</CardText>
+                    {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.Profile.specialties}</CardSubtitle>
+                    <CardText>{cookInfo.Profile.bio}</CardText> */}
                     <Button onClick={toggle}>Edit</Button>
                 </CardBody>
             </Card>
@@ -112,7 +132,7 @@ const CookInfo = () => {
                             />
                         </FormGroup>
                         {/* specialties, bio, location, cookImg */}
-                        <FormGroup>
+                        {/* <FormGroup>
                             <Label for="specialties">Specialties</Label>
                             <Input 
                                 className="form-control text-center"
@@ -141,10 +161,21 @@ const CookInfo = () => {
                                 type="text"
                                 name="location"
                                 id="location"
-                                placeholder={cookInfo.Profile.bio}
+                                placeholder={cookInfo.Profile.location}
                                 onChange={handleInputChange}
                             />
-                        </FormGroup>
+                        </FormGroup> */}
+                        {/* <FormGroup>
+                            <Label for="cookImg"/>
+                            <Input 
+                                className="form-control text-center"
+                                type="file"
+                                name="cookImg"
+                                id="cookImg"
+                                onChange={e => handleUploadImage(e)}
+                            />
+                            <FormText color="muted">Upload an image of your delicious homecooked meal to entice buyers</FormText>
+                        </FormGroup> */}
                         <Button 
                             className="btn btn-primary btn-block mt-5"
                             type="submit"
