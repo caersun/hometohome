@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button } from "reactstrap";
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button, UncontrolledPopover, PopoverBody } from "reactstrap";
+import Cart from "./Cart/Cart";
 import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
+import { connect } from "react-redux";
 
-const NavigationBar = () => {
+const NavigationBar = ({ cart }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [cartCount, setCartCount] = useState(0);
     const dispatch = useAuthDispatch();
     const history = useHistory();
     const userDetails = useAuthState();
@@ -16,21 +19,21 @@ const NavigationBar = () => {
         history.replace("/");
     }
 
-    const isLoggedIn = () => {
+    useEffect(() => {
+        let count = 0;
+
         if (!userDetails.user) {
             setLoggedIn(false);
-            console.log("Navbar ~ isLoggedIn", loggedIn);
-            return;
+        } else {
+            setLoggedIn(true)
         };
-        setLoggedIn(true);
-        console.log("Navbar ~ isLoggedIn", loggedIn);
-        return;
-    }
 
-    useEffect(() => {
-        isLoggedIn();
-    });
+        console.log("Navbar ~ loggedIn", loggedIn);
 
+        cart.forEach(item => count += item.qty);
+        setCartCount(count);
+    }, [userDetails.user, loggedIn, cart, cartCount,]);
+    
     return (
         <Navbar color="light" light expand="md">
             <NavbarBrand href="/">hometohome</NavbarBrand>
@@ -57,7 +60,13 @@ const NavigationBar = () => {
                         </>       
                     }
                     <NavItem>
-                        <NavLink href="/cart">Cart</NavLink>
+                        <Button id="cartLegacy" type="button">Cart ({cartCount})</Button>
+                        <UncontrolledPopover trigger="legacy" placement="bottom" target="cartLegacy">
+                            {/* <PopoverHeader>Ordering</PopoverHeader> */}
+                            <PopoverBody>
+                                <Cart />
+                            </PopoverBody>
+                        </UncontrolledPopover>
                     </NavItem>
                 </Nav>
             </Collapse>
@@ -65,4 +74,10 @@ const NavigationBar = () => {
     );
 };
 
-export default NavigationBar;
+const mapStateToProps = state => {
+    return {
+        cart: state.shop.cart
+    }
+}
+
+export default connect(mapStateToProps)(NavigationBar);

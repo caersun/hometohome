@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Modal, ModalHeader, ModalBody, Container, Row, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
-import ListingCard from "./ListingCard";
+import ProductCard from "./ProductCard";
+
+import { connect } from "react-redux";
 
 const Cook = (props) => {
     const [modal, setModal] = useState(false);
@@ -20,22 +22,19 @@ const Cook = (props) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader className="text-center" toggle={toggle}>{props.firstName}'s Kitchen</ModalHeader>
                 <ModalBody>
-                        {!props.listings
-                        ? <div>This homecook has no current listings.</div>
-                        : (props.listings.map(listing => (
-                            <Container fluid key={listing.id}>
-                                <ListingCard 
-                                    previewImage={listing.previewImage}
-                                    food={listing.food}
-                                    price={listing.price}
-                                    description={listing.description}
-                                />
-                            </Container>
-                        )))}
+                        {props.products.map(product => (
+                            <ProductCard key={product.id} productData={product} />
+                        ))}
                 </ModalBody>
             </Modal>
         </div>
     );
 };
 
-export default Cook;
+const mapStateToProps = state => {
+    return {
+        products: state.shop.products
+    }
+}
+// export default Cook;
+export default connect(mapStateToProps)(Cook);

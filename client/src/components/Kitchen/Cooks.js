@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import Cook from "./Cook";
-import API from "../utils/API";
+import API from "../../utils/API";
 
 const Cooks = () => {
     const [allCooks, setAllCooks] = useState([]);
@@ -25,7 +25,7 @@ const Cooks = () => {
                         <Cook 
                            firstName={cook.firstName}
                            lastName={cook.lastName}
-                           listings={cook.Listings}
+                        //    listings={cook.Listings}
                         />
                     </Col>
                 )))
