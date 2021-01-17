@@ -16,7 +16,7 @@ function Register() {
         setRegisterUser({ ...registerUser, [name]: value });
     };
 
-<<<<<<< HEAD
+
 
     // image upload info source https://dev.to/asimdahall/client-side-image-upload-in-react-5ffc
     const uploadedImage = React.useRef(null);
@@ -39,13 +39,13 @@ function Register() {
 
 
     // needs to pass on the info of the file image
-    // needs to decrease its size and go in between 
-=======
+
+
     // const handleProfileInputChange = (event) => {
     //     const { name, value } = event.target;
     //     setProfileInfo({ ...profileInfo, [name]: value });
     // }
->>>>>>> e2b6e67020443a15482569f31b4cda52e70e8eb9
+
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -55,15 +55,9 @@ function Register() {
                 lastName: registerUser.lastName,
                 email: registerUser.email,
                 password: registerUser.password,
-<<<<<<< HEAD
-                specialties: registerUser.specialties,
-                bio: registerUser.bio,
-                cookImg: {imageUploader} // doesn't look like it is the right way to get the info?
-            }).then(() => {
-=======
             }).then((res) => {
-                API.createProfile({ CookId: res.data.id });
->>>>>>> e2b6e67020443a15482569f31b4cda52e70e8eb9
+                API.createProfile({ CookId: res.data.id, specialties: registerUser.specialties,
+                bio: registerUser.bio, cookImg: {imageUploader} });
                 setRegisterUser({});
                 history.push("/login");
             }).catch(err => console.log(err));
@@ -157,6 +151,8 @@ function Register() {
                             onChange={handleProfileInputChange}
                         />
                     </FormGroup>
+*/}
+
                     <FormGroup>
                     <Col xs={4}>
                         <Label for="cookImg">Cook Profile Image</Label>
@@ -165,19 +161,20 @@ function Register() {
                             className="form-control text-center" 
                             type="file"
                             name="cookImg"
-<<<<<<< HEAD
+
                             id="cookImg"
                             accept="image/*"  // accepts only image
                             multiple = "false" // accepts only one 
                             onChange={handleImageUpload}
                             ref={imageUploader}
-=======
+
                             id="cookImg" 
                             onChange={handleProfileInputChange}
->>>>>>> e2b6e67020443a15482569f31b4cda52e70e8eb9
+
                         />
-                       
-                        {/* showing the uploaded picture user is registering */}
+                   {/* showing the uploaded picture user is registering  */}
+                       <Col>
+                        
                                 <img 
                                     ref={uploadedImage} // can disply image thanks to the useRef hook
                                       style={{
@@ -194,7 +191,8 @@ function Register() {
                         <FormText color="muted">
                             Upload a profile image. Buyer's trust cooks they can see!
                         </FormText>
-                    </FormGroup> */}
+                  
+                     
                     <Button 
                         className="btn btn-primary btn-block mt-5"
                         type="submit"
