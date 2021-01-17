@@ -8,13 +8,15 @@ import API from "../utils/API";
 // TODO: Now showing full register info? Probably in register thing
 function Register() {
     const [registerUser, setRegisterUser] = useState({});
+    // const [profileInfo, setProfileInfo] = useState({});
     const history = useHistory();
 
-    const handleInputChange = (event) => {
+    const handleRegistrationInputChange = (event) => {
         const { name, value } = event.target;
         setRegisterUser({ ...registerUser, [name]: value });
     };
 
+<<<<<<< HEAD
 
     // image upload info source https://dev.to/asimdahall/client-side-image-upload-in-react-5ffc
     const uploadedImage = React.useRef(null);
@@ -38,6 +40,12 @@ function Register() {
 
     // needs to pass on the info of the file image
     // needs to decrease its size and go in between 
+=======
+    // const handleProfileInputChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setProfileInfo({ ...profileInfo, [name]: value });
+    // }
+>>>>>>> e2b6e67020443a15482569f31b4cda52e70e8eb9
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -47,10 +55,15 @@ function Register() {
                 lastName: registerUser.lastName,
                 email: registerUser.email,
                 password: registerUser.password,
+<<<<<<< HEAD
                 specialties: registerUser.specialties,
                 bio: registerUser.bio,
                 cookImg: {imageUploader} // doesn't look like it is the right way to get the info?
             }).then(() => {
+=======
+            }).then((res) => {
+                API.createProfile({ CookId: res.data.id });
+>>>>>>> e2b6e67020443a15482569f31b4cda52e70e8eb9
                 setRegisterUser({});
                 history.push("/login");
             }).catch(err => console.log(err));
@@ -72,7 +85,7 @@ function Register() {
                                     name="firstName"
                                     id="firstName" 
                                     placeholder="First Name"
-                                    onChange={handleInputChange}
+                                    onChange={handleRegistrationInputChange}
                                 />
                             </FormGroup>
                         </Col>
@@ -85,22 +98,11 @@ function Register() {
                                     name="lastName"
                                     id="lastName" 
                                     placeholder="Last Name"
-                                    onChange={handleInputChange}
+                                    onChange={handleRegistrationInputChange}
                                 />
                             </FormGroup>
                         </Col>
                     </Row>
-                    {/* <FormGroup>
-                        <Label for="fullName">Full Name</Label>
-                        <Input 
-                            className="form-control text-center"
-                            type="text"
-                            name="fullName"
-                            id="fullName" 
-                            placeholder="Full Name"
-                            onChange={handleInputChange}
-                        />
-                    </FormGroup> */}
                     <FormGroup>
                         <Label for="email">Email</Label>
                         <Input 
@@ -109,7 +111,7 @@ function Register() {
                             name="email"
                             id="email" 
                             placeholder="Email"
-                            onChange={handleInputChange}
+                            onChange={handleRegistrationInputChange}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -120,7 +122,7 @@ function Register() {
                             name="password"
                             id="password" 
                             placeholder="Password"
-                            onChange={handleInputChange}
+                            onChange={handleRegistrationInputChange}
                         />
                     </FormGroup>
                     {/* <FormGroup>
@@ -133,7 +135,7 @@ function Register() {
                             onChange={e => setRegisterPassword(e.target.value)}
                         />
                     </FormGroup> */}
-                    <FormGroup>
+                    {/* <FormGroup>
                         <Label for="specialties">Your Cooking Specialties</Label>
                         <Input 
                             className="form-control text-center" 
@@ -141,7 +143,7 @@ function Register() {
                             name="specialties"
                             id="specialties" 
                             placeholder="Southern, Comfort, Italian, Mexican, etc."
-                            onChange={handleInputChange}
+                            onChange={handleProfileInputChange}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -152,7 +154,7 @@ function Register() {
                             name="bio"
                             id="bio" 
                             placeholder="Write something for prospective buyers"
-                            onChange={handleInputChange}
+                            onChange={handleProfileInputChange}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -163,11 +165,16 @@ function Register() {
                             className="form-control text-center" 
                             type="file"
                             name="cookImg"
+<<<<<<< HEAD
                             id="cookImg"
                             accept="image/*"  // accepts only image
                             multiple = "false" // accepts only one 
                             onChange={handleImageUpload}
                             ref={imageUploader}
+=======
+                            id="cookImg" 
+                            onChange={handleProfileInputChange}
+>>>>>>> e2b6e67020443a15482569f31b4cda52e70e8eb9
                         />
                        
                         {/* showing the uploaded picture user is registering */}
@@ -187,7 +194,7 @@ function Register() {
                         <FormText color="muted">
                             Upload a profile image. Buyer's trust cooks they can see!
                         </FormText>
-                    </FormGroup>
+                    </FormGroup> */}
                     <Button 
                         className="btn btn-primary btn-block mt-5"
                         type="submit"

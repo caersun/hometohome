@@ -7,7 +7,6 @@ function Login() {
     const [loginUser, setLoginUser] = useState({});
     const history = useHistory();
     const dispatch = useAuthDispatch();
-    // const { loading, errorMessage } = useAuthState();
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -25,38 +24,40 @@ function Login() {
         }).catch(err => console.log(err));
     };
 
-    return <Container>
-        <Card>
-            <CardBody>
-                <h1 className="text-center mb-3">Login</h1>
-                <Form>
-                    <FormGroup>
-                        <Label for="email">Email</Label>
-                        <Input
-                            className="form-control text-center"
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="Enter Email"
-                            onChange={handleInputChange}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="password">Password</Label>
-                        <Input
-                            className="form-control text-center"
-                            type="password"
-                            name="password"
-                            id="password"
-                            placeholder="Enter Password"
-                            onChange={handleInputChange}
-                        />
-                    </FormGroup>
-                    <Button className="btn btn-primary btn-clock mt-5" type="submit" onClick={handleLogin}>Sign in</Button>
-                </Form>
-            </CardBody>
-        </Card>
-    </Container>
+    return (
+        <Container>
+            <Card>
+                <CardBody>
+                    <h1 className="text-center mb-3">Login</h1>
+                    <Form>
+                        <FormGroup>
+                            <Label for="email">Email</Label>
+                            <Input
+                                className="form-control text-center"
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="Enter Email"
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="password">Password</Label>
+                            <Input
+                                className="form-control text-center"
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Enter Password"
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        <Button className="btn btn-primary btn-clock mt-5" type="submit" onClick={handleLogin}>Sign in</Button>
+                    </Form>
+                </CardBody>
+            </Card>
+        </Container>
+    );
 }
 
 export default Login;
