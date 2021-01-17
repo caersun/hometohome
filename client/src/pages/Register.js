@@ -15,6 +15,30 @@ function Register() {
         setRegisterUser({ ...registerUser, [name]: value });
     };
 
+
+    // image upload info source https://dev.to/asimdahall/client-side-image-upload-in-react-5ffc
+    const uploadedImage = React.useRef(null);
+    const imageUploader = React.useRef(null);
+    
+
+    // access the image file in the handleImageUpload method attached with onChange event
+    const handleImageUpload = e => {
+      const [file] = e.target.files; // gives access to the list of files uploaded via the file input we created (only one because we restricted # to one)
+      if (file) {
+        const reader = new FileReader();  // using the FileReader constructor in order to read the content of the file
+        const { current } = uploadedImage; // what does it do?
+        current.file = file;
+        reader.onload = e => {  //Attaching an onload event listener to the reader we created which when loaded will attach the file url it will read to the img element
+          current.src = e.target.result;
+        };
+        reader.readAsDataURL(file); // Read the file as URL and passs the file selected in it
+      }
+    };
+
+
+    // needs to pass on the info of the file image
+    // needs to decrease its size and go in between 
+
     const handleRegistration = (event) => {
         event.preventDefault();
         if (registerUser.firstName && registerUser.lastName && registerUser.email && registerUser.password) {
@@ -25,7 +49,7 @@ function Register() {
                 password: registerUser.password,
                 specialties: registerUser.specialties,
                 bio: registerUser.bio,
-                cookImg: registerUser.cookImg
+                cookImg: {imageUploader} // doesn't look like it is the right way to get the info?
             }).then(() => {
                 setRegisterUser({});
                 history.push("/login");
@@ -132,14 +156,34 @@ function Register() {
                         />
                     </FormGroup>
                     <FormGroup>
+                    <Col xs={4}>
                         <Label for="cookImg">Cook Profile Image</Label>
                         <Input 
+                            
                             className="form-control text-center" 
                             type="file"
                             name="cookImg"
-                            id="cookImg" 
-                            onChange={handleInputChange}
+                            id="cookImg"
+                            accept="image/*"  // accepts only image
+                            multiple = "false" // accepts only one 
+                            onChange={handleImageUpload}
+                            ref={imageUploader}
                         />
+                       
+                        {/* showing the uploaded picture user is registering */}
+                                <img 
+                                    ref={uploadedImage} // can disply image thanks to the useRef hook
+                                      style={{
+                                    width: "1",
+                                    height: "1",
+                                    position: "relative",
+                                    borderRadius: "50%"
+                                    }}
+                                />  
+
+                                
+                        </Col>
+                        
                         <FormText color="muted">
                             Upload a profile image. Buyer's trust cooks they can see!
                         </FormText>
