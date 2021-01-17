@@ -1,10 +1,7 @@
-// import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from "reactstrap";
-// import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
 import CookInfo from "../components/Cook/CookInfo";
 import CookListings from "../components/Cook/CookListings";
-// import Scroll from "./Scroll";
 import { useAuthState } from "../utils/AuthContext";
 import API from "../utils/API";
 import { useState } from "react";
@@ -64,13 +61,13 @@ const Dash = () => {
                         <Row>
                             <Col>
                                 <FormGroup>
-                                    <Label for="food">Food Item or Main Dish</Label>
+                                    <Label for="food">Food Item</Label>
                                     <Input 
                                         className="form-control text-center"
                                         type="text"
                                         name="food"
                                         id="food" 
-                                        placeholder="Food"
+                                        placeholder="Meatloaf, Tamales, Pizza"
                                         onChange={handleInputChange}
                                     />
                                 </FormGroup>

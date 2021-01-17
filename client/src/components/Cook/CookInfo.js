@@ -12,12 +12,6 @@ const CookInfo = () => {
     const userDetails = useAuthState();
     const toggle = () => setModal(!modal);
 
-    const getCookInfo = () => {
-        API.getCook(userDetails.user.id)
-            .then(res => setCookInfo(res.data))
-            .catch(err => console.log(err));
-    };
-
     const handleInputChange = event => {
         const { name, value } = event.target;
         setUpdateInfo({ ...updateInfo, [name]: value });
@@ -40,24 +34,37 @@ const CookInfo = () => {
             API.updateCook(userDetails.user.id, { email: updateInfo.email }).catch(err => console.log(err));
         };
 
-        getCookInfo();
+        if (updateInfo.bio) {
+            API.updateProfile(userDetails.user.id, { bio: updateInfo.bio }).catch(err => console.log(err));
+        };
+
+        if (updateInfo.specialties) {
+            API.updateProfile(userDetails.user.id, { specialties: updateInfo.specialties }).catch(err => console.log(err));
+        };
+
+        if (updateInfo.location) {
+            API.updateProfile(userDetails.user.id, { location: updateInfo.location }).catch(err => console.log(err));
+        };
+
         toggle();
         history.replace("/");
         history.replace("/dash");        
     };
 
     useEffect(() => {
-        getCookInfo();
-    }, []);
+        API.getCook(userDetails.user.id)
+            .then(res => setCookInfo(res.data))
+            .catch(err => console.log(err));
+    }, [userDetails.user, updateInfo]);
 
     return (
         <div>
             <Card>
-                <CardImg top width="100%" src={cookInfo.cookImg} alt={cookInfo.firstName} />
+                <CardImg top width="100%" src={cookInfo.Profile.img} alt={cookInfo.firstName} />
                 <CardBody>
                     <CardTitle tag="h5">{cookInfo.firstName} {cookInfo.lastName}</CardTitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.specialities}</CardSubtitle>
-                    <CardText>{cookInfo.bio}</CardText>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.Profile.specialties}</CardSubtitle>
+                    <CardText>{cookInfo.Profile.bio}</CardText>
                     <Button onClick={toggle}>Edit</Button>
                 </CardBody>
             </Card>
@@ -101,6 +108,40 @@ const CookInfo = () => {
                                 name="email"
                                 id="email"
                                 placeholder={cookInfo.email}
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        {/* specialties, bio, location, cookImg */}
+                        <FormGroup>
+                            <Label for="specialties">Specialties</Label>
+                            <Input 
+                                className="form-control text-center"
+                                type="text"
+                                name="specialties"
+                                id="specialties"
+                                placeholder={cookInfo.Profile.specialties}
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="bio">Cook Bio</Label>
+                            <Input 
+                                className="form-control text-center"
+                                type="text"
+                                name="bio"
+                                id="bio"
+                                placeholder={cookInfo.Profile.bio}
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="location">Location</Label>
+                            <Input 
+                                className="form-control text-center"
+                                type="text"
+                                name="location"
+                                id="location"
+                                placeholder={cookInfo.Profile.bio}
                                 onChange={handleInputChange}
                             />
                         </FormGroup>

@@ -4,6 +4,7 @@ import axios from "axios";
 const domain = "http://localhost:3001";
 
 const API = {
+    // auth api
     register: (userInfo) => {
         return axios.post(domain + "/api/auth/signup", userInfo);
     },
@@ -13,6 +14,7 @@ const API = {
     logout: () => {
         return axios.get(domain + "/api/auth/logout");
     },
+    // cook api
     getCooks: () => {
         return axios.get(domain + "/api/cooks");
     },
@@ -25,14 +27,34 @@ const API = {
     deleteCook: (id) => {
         return axios.delete(domain + "/api/cooks/" + id);
     },
+    // profile api
+    getProfiles: () => {
+        return axios.get(domain + "/api/profile");
+    },
+    getProfileById: (id) => {
+        return axios.get(domain + "/api/profile/" + id);
+    },
+    getProfileByCookId: (cookId) => {
+        return axios.get(domain + "/api/profile/cook/" + cookId)
+    },
+    createProfile: (profileInfo) => {
+        return axios.post(domain + "/api/profile", profileInfo);
+    },
+    updateProfile: (id, updateData) => {
+        return axios.put(domain + "/api/profile/" + id, updateData);
+    },
+    deleteProfile: (id) => {
+        return axios.delete(domain + "/api/profile/" + id);
+    },
+    // listings api
     getListings: () => {
         return axios.get(domain + "/api/listings");
     },
     getListing: (id) => {
         return axios.get(domain + "/api/listings/" + id);
     },
-    getListingsByCook: (id) => {
-        return axios.get(domain + "/api/listings/cook/" + id);
+    getListingsByCook: (cookId) => {
+        return axios.get(domain + "/api/listings/cook/" + cookId);
     },
     createListing: (listingInfo) => {
         return axios.post(domain + "/api/listings", listingInfo);
