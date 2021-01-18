@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Container, Card, CardBody, CardTitle, CardSubtitle, CardText, CardFooter, Button } from "reactstrap";
 import { connect } from "react-redux";
 import CartItem from "./CartItem";
+import StripePayment from "./StripeCheckout";
+import { Redirect } from "react-router-dom";
 
 const Cart = ({ cart }) => {
     const [totalPrice, setTotalPrice] = useState(0);
@@ -44,11 +46,17 @@ const Cart = ({ cart }) => {
                         <span className="float-right"> ({totalItems} items)</span>
                     </CardSubtitle>
                 </CardBody>
-                <CardFooter>
-                    <Button>Proceed to Checkout</Button>
-                </CardFooter>
+                
+                    <StripePayment totalPrice={totalPrice}>      
+                    </StripePayment>
+                    {/* if amount = 0 then don't start */}
+                    {/* put the server working */}
+                    {/* <Redirect to={{ pathname: "/" }} /> how to get to the main screen? */}
+
             </Card>
         </Container>
+
+        
     );
 };
 
