@@ -4,7 +4,8 @@ import { CardFooter, Button } from "reactstrap";
 
 
 function StripePayment(props) {
-  const domain = "https://localhost:3001";
+  // const domain = "https://localhost:3001";
+  const domain = "";
 
   const completePayment = () => {
       alert("thanks for your payement");

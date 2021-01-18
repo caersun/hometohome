@@ -11,6 +11,7 @@ const passport = require("./config/passport");
 const flash = require("connect-flash");
 const db = require("./models");
 const routes = require("./routes");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
