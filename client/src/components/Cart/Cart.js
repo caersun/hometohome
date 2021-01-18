@@ -25,8 +25,7 @@ const Cart = ({ cart }) => {
 
     return (
         <Container fluid>
-            {/* <Container fluid> */}
-                {!cart.length 
+            {!cart.length 
                 ? <Card>
                     <CardBody>
                         <CardTitle tag="h3" className="text-center">Cart Empty</CardTitle>
@@ -36,8 +35,7 @@ const Cart = ({ cart }) => {
                 // ? <h6>Cart empty</h6>
                 : (cart.map(item => (
                     <CartItem key={item.id} item={item} />
-                )))}
-            {/* </Container> */}
+            )))}
             <Card>
                 <CardBody>
                     <CardTitle tag="h5" className="text-center">Order Summary</CardTitle>

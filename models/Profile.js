@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
         location: {
             type: DataTypes.STRING
         },
-        // cookImg: {
-        //     type: DataTypes.STRING
-        // }
+        cookImgURL: {
+            type: DataTypes.STRING
+        }
     });
 
     Profile.associate = db => {
         Profile.belongsTo(db.Cook, { foreignKey: { allowNull: false }});
-        Profile.hasOne(db.CookImage, { onDelete: "cascade" });
+        // Profile.hasOne(db.CookImage, { onDelete: "cascade" });
     };
 
     return Profile
