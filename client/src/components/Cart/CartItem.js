@@ -13,7 +13,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
     return (
         <Card>
-            <CardImg top width="100%" src={item.img} alt={item.food} />
+            <CardImg top width="100%" src={item.imgURL} alt={item.food} />
             <CardBody>
                 <CardTitle tag="h5">
                     <span className="float-left">{item.food}</span>
