@@ -9,7 +9,7 @@ const Cooks = () => {
     useEffect(() => {
         API.getCooks()
             .then(res => {
-                console.log(res.data);
+                console.log("all homecooks", res.data);
                 setAllCooks(res.data);
             })
             .catch(err => console.log(err));
@@ -22,11 +22,7 @@ const Cooks = () => {
                 ? <Col className="text-center"><h1>There are currently no Homecooks.</h1></Col>
                 : (allCooks.map(cook => (
                     <Col xs="12" s="6" md="4" key={cook.id}>
-                        <Cook 
-                           firstName={cook.firstName}
-                           lastName={cook.lastName}
-                        //    listings={cook.Listings}
-                        />
+                        <Cook cook={cook} />
                     </Col>
                 )))
             }  
