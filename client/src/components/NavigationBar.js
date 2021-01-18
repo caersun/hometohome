@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Button, UncontrolledPopover, PopoverBody } from "reactstrap";
+import { useHistory, Link } from "react-router-dom";
+import { Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, Button, UncontrolledPopover, PopoverBody } from "reactstrap";
 import Cart from "./Cart/Cart";
 import { useAuthState, useAuthDispatch, logout } from "../utils/AuthContext";
 import { connect } from "react-redux";
@@ -52,10 +52,10 @@ const NavigationBar = ({ cart }) => {
                         </>
                         : <>
                             <NavItem>
-                                <NavLink href="/signup">Become a Homecook</NavLink>
+                                <Link to="/signup" className="nav-link">Become a Homecook</Link>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/login">Login</NavLink>
+                                <Link to="/login" className="nav-link">Login</Link>
                             </NavItem>
                         </>       
                     }
