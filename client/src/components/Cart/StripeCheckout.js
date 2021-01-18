@@ -5,7 +5,7 @@ import { CardFooter, Button } from "reactstrap";
 
 function StripePayment(props) {
   // const domain = "https://localhost:3001";
-  const domain = "";
+  // const domain = "";
 
   const completePayment = () => {
       alert("thanks for your payement");
@@ -25,7 +25,7 @@ const makePayment = token => {
   const headers = {
     "Content-Type": "application/json"
   }
-  return fetch(domain + "/payment", {
+  return fetch("/payment", {
     method: "POST",
     headers,
     body: JSON.stringify(body)

@@ -20,8 +20,8 @@ const PORT = process.env.PORT || 3001;
 app.use(logger("dev"));
 // app.use("/uploads", express.static("uploads"));
 // app.use(compression());
-// origin: "http://localhost:3000"
-app.use(cors({ origin: "http://shrouded-ridge-96837.herokuapp.com/", credentials: true })); //react and server communciation for data transfer //
+// origin: "http://shrouded-ridge-96837.herokuapp.com/"
+app.use(cors({ origin: "http://localhost:3000", credentials: true })); //react and server communciation for data transfer //
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
@@ -53,7 +53,7 @@ db.sequelize
   .sync({ force: false }) 
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`🌎  ==> API Server now listening on PORT ${PORT}! Go to https://localhost:${PORT}`);
+      console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
     });
   })
   .catch(err => console.log("Error with sequelize:", err));
