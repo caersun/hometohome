@@ -38,6 +38,10 @@ app.use((req, res, next) => {
 });
 
 app.use(routes);
+// Send the HTML file for requests to root URL
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
