@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormText, Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
+import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
 import API from "../utils/API";
 
 // TODO: Need logic to compare passwords within form

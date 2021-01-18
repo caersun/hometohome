@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, Row, Col, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, Row, Col, FormGroup, Label, Input } from "reactstrap";
 import { useAuthState } from "../../utils/AuthContext";
 import API from "../../utils/API";
 
@@ -92,7 +92,7 @@ const CookInfo = () => {
                 setProfileInfo(res.data.Profile);
             })
             .catch(err => console.log(err));
-    }, []); 
+    }, [userDetails.user.id]); 
 
     return (
         <div>
@@ -112,7 +112,6 @@ const CookInfo = () => {
                 <ModalBody>
                     <Form>
                         <FormGroup>
-                            {/* <Label for="cookImg"/> */}
                             <input 
                                 className="form-control text-center"
                                 type="file"
@@ -120,7 +119,6 @@ const CookInfo = () => {
                                 id="cookImg"
                                 onChange={(e => setUploadedImage(e.target.files))}
                             />
-                            {/* <FormText color="muted">Upload an image of your delicious homecooked meal to entice buyers</FormText> */}
                         </FormGroup>
                         <Button className="btn btn-primary btn-block mt-5"
                             // type="submit"
@@ -173,7 +171,6 @@ const CookInfo = () => {
                                 onChange={handleInputChange}
                             />
                         </FormGroup>
-                        {/* specialties, bio, location, cookImg */}
                         <FormGroup>
                             <Label for="specialties">Specialties</Label>
                             <Input 
