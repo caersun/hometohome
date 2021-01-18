@@ -1,13 +1,11 @@
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from "reactstrap";
 import { useDispatch } from "react-redux";
-// import { connect } from "react-redux";
 import { addToCart } from "../../utils/Redux/Shopping/shopping-actions";
 
 const ProductCard = ({ productData }) => {
     const dispatch = useDispatch();
 
-    // console.log("in ListingCard ~ productData import from CookListings:", productData);
-    return (
+   return (
         <Card>
             <CardImg top width="100%" src={productData.imgURL} alt={productData.food} />
             <CardBody className="text-center">
@@ -23,12 +21,3 @@ const ProductCard = ({ productData }) => {
     )
 };
 export default ProductCard;
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         addToCart: (id) => dispatch(addToCart(id))
-//     }
-// }
-
-// export default ListingCard;
-// null because not using any of the state
-// export default connect(null, mapDispatchToProps)(ProductCard);

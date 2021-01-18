@@ -2,9 +2,8 @@ import *  as actionTypes from "./shopping-types";
 import API from "../../API";
 
 export const addToCart = (itemID) => async (dispatch, getState) => {
-    console.log("in shoppingactions ~ addToCart ~ itemID", itemID)
     const { data } = await API.getListing(itemID);
-    console.log("in shoppingactions ~ async addtocart ~ after api.getlisting ~ res", data);
+    // console.log("in shoppingactions ~ async addtocart ~ after api.getlisting ~ data", data);
     
     dispatch({
         type: actionTypes.ADD_TO_CART,

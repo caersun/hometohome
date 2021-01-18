@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, FormGroup } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, FormGroup } from "reactstrap";
 import API from "../../utils/API";
 
 const CookListingCard = ({ listing }) => {
