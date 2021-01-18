@@ -2,6 +2,7 @@ import axios from "axios";
 
 // TODO: How to make it so URL is NOT at localhost:3001? Does not register/login without it
 const domain = "http://localhost:3001";
+// const domain = "";
 
 const API = {
     // auth api
