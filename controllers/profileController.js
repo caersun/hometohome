@@ -3,14 +3,14 @@ const db = require("../models");
 const profileController = {
     findAll: (req, res) => {
         db.Profile
-            .findAll({ include: [db.Cook, db.CookImage] })
+            .findAll({ include: [db.Cook] })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findByCook: (req, res) => {
         db.Profile.findOne({ 
             where: { CookId: req.params.id },
-            include: [db.Cook, db.CookImage]
+            include: [db.Cook]
         })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -18,7 +18,7 @@ const profileController = {
     findById: (req, res) => {
         db.Profile.findOne({
             where: { id: req.params.id },
-            include: [db.Cook, db.CookImage]
+            include: [db.Cook]
         })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

@@ -3,13 +3,11 @@ import { useHistory } from "react-router-dom";
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Modal, ModalHeader, ModalBody, Form, Row, Col, FormGroup, Label, Input, FormText } from "reactstrap";
 import { useAuthState } from "../../utils/AuthContext";
 import API from "../../utils/API";
-// import defaultUserImage from "../../assets/default-user.jpg";
 
 const CookInfo = () => {
     const [cookInfo, setCookInfo] = useState({});
+    const [profileInfo, setProfileInfo] = useState({});
     const [updateInfo, setUpdateInfo] = useState({});
-    // const [uploadImage, setUploadImage] = useState("../../assets/default-user.jpg");
-    // const [multerImage, setMulterImage] = useState({});
     const [modal, setModal] = useState(false);
     const history = useHistory();
     const userDetails = useAuthState();
@@ -20,52 +18,45 @@ const CookInfo = () => {
         setUpdateInfo({ ...updateInfo, [name]: value });
     };
 
-    // const handleUploadImage = event => {
-    //     // let imageObj = {};
-    //     let imageFormObj = new FormData();
-
-    //     imageFormObj.append("name", "TRYINGPLS");
-    //     imageFormObj.append("img", event.target.files[0]);
-    //     setMulterImage(URL.createObjectURL(event.target.files[0]));
-    //     API.createCookImage(imageFormObj).then((data) => {
-    //         if (data.data.success) {
-    //             alert("Image has been successfully uploaded!");
-    //             console.log("this says we did it!", data);
-    //         }
-    //     }).catch(err => console.log(err));
-        // console.log("cookInfo ~ handleUploadImage ~ imageFormObj:", imageFormObj);
-        // console.log("cookInfo ~ handleUploadImage ~ multerImage:", multerImage);
-    // };
-
-    const handleCookUpdate = event => {
-        event.preventDefault();
-
-        // TODO: How to get all these to resolve before we can get to getCookInfo()?
-
+    const updateConditions = () => {
         if (updateInfo.firstName) {
-            API.updateCook(userDetails.user.id, { firstName: updateInfo.firstName }).catch(err => console.log(err));
+            API.updateCook(cookInfo.id, { firstName: updateInfo.firstName }).catch(err => console.log(err));
+            setCookInfo({ ...cookInfo, firstName: updateInfo.firstName });
         };
 
         if (updateInfo.lastName) {
-            API.updateCook(userDetails.user.id, { lastName: updateInfo.lastName }).catch(err => console.log(err));
+            API.updateCook(cookInfo.id, { lastName: updateInfo.lastName }).catch(err => console.log(err));
+            setCookInfo({ ...cookInfo, lastName: updateInfo.lastName });
         };
 
         if (updateInfo.email) {
-            API.updateCook(userDetails.user.id, { email: updateInfo.email }).catch(err => console.log(err));
+            API.updateCook(cookInfo.id, { email: updateInfo.email }).catch(err => console.log(err));
+            setCookInfo({ ...cookInfo, email: updateInfo.email });
         };
 
         if (updateInfo.bio) {
-            API.updateProfile(userDetails.user.id, { bio: updateInfo.bio }).catch(err => console.log(err));
+            API.updateProfile(profileInfo.id, { bio: updateInfo.bio }).catch(err => console.log(err));
+            setProfileInfo({ ...profileInfo, bio: updateInfo.bio });
         };
 
         if (updateInfo.specialties) {
-            API.updateProfile(userDetails.user.id, { specialties: updateInfo.specialties }).catch(err => console.log(err));
+            API.updateProfile(profileInfo.id, { specialties: updateInfo.specialties }).catch(err => console.log(err));
+            setProfileInfo({ ...profileInfo, specialties: updateInfo.specialties });
         };
 
         if (updateInfo.location) {
-            API.updateProfile(userDetails.user.id, { location: updateInfo.location }).catch(err => console.log(err));
+            API.updateProfile(profileInfo.id, { location: updateInfo.location }).catch(err => console.log(err));
+            setProfileInfo({ ...profileInfo, location: updateInfo.location });
         };
+    }
 
+    const handleCookUpdate =  async (event) => {
+        event.preventDefault();
+
+        // TODO: How to get all these to resolve before we can get to getCookInfo()?
+        await updateConditions();
+
+        // loadCook();
         toggle();
         history.replace("/");
         history.replace("/dash");        
@@ -73,18 +64,23 @@ const CookInfo = () => {
 
     useEffect(() => {
         API.getCook(userDetails.user.id)
-            .then(res => setCookInfo(res.data))
+            .then(res => {
+                setCookInfo(res.data);
+                setProfileInfo(res.data.Profile);
+                // console.log("in CookInfo ~ useEffect ~ after getCook ~ cookInfo", cookInfo);
+            })
             .catch(err => console.log(err));
-    }, [userDetails.user, updateInfo]);
+    }, [userDetails.user.id]); 
 
     return (
         <div>
             <Card>
-                {/* <CardImg top width="100%" src={cookInfo.Profile.img} alt={cookInfo.firstName} /> */}
+                <CardImg top width="100%" src={profileInfo.cookImgURL} alt={cookInfo.firstName} />
                 <CardBody>
                     <CardTitle tag="h5">{cookInfo.firstName} {cookInfo.lastName}</CardTitle>
-                    {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.Profile.specialties}</CardSubtitle>
-                    <CardText>{cookInfo.Profile.bio}</CardText> */}
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">{profileInfo.specialties}</CardSubtitle>
+                    <CardText>{profileInfo.bio}</CardText>
+                    <CardText>{profileInfo.location}</CardText>
                     <Button onClick={toggle}>Edit</Button>
                 </CardBody>
             </Card>
@@ -132,14 +128,14 @@ const CookInfo = () => {
                             />
                         </FormGroup>
                         {/* specialties, bio, location, cookImg */}
-                        {/* <FormGroup>
+                        <FormGroup>
                             <Label for="specialties">Specialties</Label>
                             <Input 
                                 className="form-control text-center"
                                 type="text"
                                 name="specialties"
                                 id="specialties"
-                                placeholder={cookInfo.Profile.specialties}
+                                placeholder={profileInfo.specialties}
                                 onChange={handleInputChange}
                             />
                         </FormGroup>
@@ -150,7 +146,7 @@ const CookInfo = () => {
                                 type="text"
                                 name="bio"
                                 id="bio"
-                                placeholder={cookInfo.Profile.bio}
+                                placeholder={profileInfo.bio}
                                 onChange={handleInputChange}
                             />
                         </FormGroup>
@@ -161,10 +157,10 @@ const CookInfo = () => {
                                 type="text"
                                 name="location"
                                 id="location"
-                                placeholder={cookInfo.Profile.location}
+                                placeholder={profileInfo.location}
                                 onChange={handleInputChange}
                             />
-                        </FormGroup> */}
+                        </FormGroup>
                         {/* <FormGroup>
                             <Label for="cookImg"/>
                             <Input 

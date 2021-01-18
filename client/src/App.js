@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dash from "./pages/Dash";
 import { AuthProvider } from "./utils/AuthContext";
+import ImageUpload from "./components/ImageUpload";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/signup" component={Register} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/dash" component={Dash} />
+          <Route exact path="/imageupload" component={ImageUpload} />
         </Switch>
       </Router>
     </AuthProvider>
