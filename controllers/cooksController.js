@@ -1,13 +1,10 @@
-// const { request } = require("express");
 const db = require("../models");
 
 // defining methods for the cooksController
 const cooksController = {
     findAll: (req, res) => {
-        // console.log("in cooksController ~ findAll ~ req", req);
         db.Cook
-            // is this how to include Listing?
-            .findAll({ include: { model: db.Listing } })
+            .findAll({ include: [db.Profile, db.Listing] }) // add db.Listing
             // is there a way to sort?
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -15,10 +12,10 @@ const cooksController = {
     findById: (req, res) => {
         db.Cook.findOne({ 
             where: { id: req.params.id },
-            include: { model: db.Listing }
+            include: [db.Profile, db.Listing] // add db.Listing
         })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .catch(err => res.json(err)); //.status(422)
     },
     update: (req, res) => {
         db.Cook.update(req.body, { where: { id: req.params.id } })

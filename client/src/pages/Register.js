@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormText, Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
+import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
 import API from "../utils/API";
 
 // TODO: Need logic to compare passwords within form
@@ -8,18 +8,13 @@ import API from "../utils/API";
 // TODO: Now showing full register info? Probably in register thing
 function Register() {
     const [registerUser, setRegisterUser] = useState({});
-    // const [profileInfo, setProfileInfo] = useState({});
     const history = useHistory();
+    const defaultProfileImg = "https://res.cloudinary.com/dxpy2lt0i/image/upload/v1610923727/rrw9yj7b18vlrbis7hc8.jpg";
 
     const handleRegistrationInputChange = (event) => {
         const { name, value } = event.target;
         setRegisterUser({ ...registerUser, [name]: value });
     };
-
-    // const handleProfileInputChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setProfileInfo({ ...profileInfo, [name]: value });
-    // }
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -30,7 +25,10 @@ function Register() {
                 email: registerUser.email,
                 password: registerUser.password,
             }).then((res) => {
-                API.createProfile({ CookId: res.data.id });
+                API.createProfile({ 
+                    CookId: res.data.id,
+                    cookImgURL: defaultProfileImg
+                 });
                 setRegisterUser({});
                 history.push("/login");
             }).catch(err => console.log(err));
@@ -92,51 +90,6 @@ function Register() {
                             onChange={handleRegistrationInputChange}
                         />
                     </FormGroup>
-                    {/* <FormGroup>
-                        <Label for="confirm">Confirm Password</Label>
-                        <Input 
-                            className="form-control text-center" 
-                            type="password"
-                            id="confirm" 
-                            placeholder="Confirm Password"
-                            onChange={e => setRegisterPassword(e.target.value)}
-                        />
-                    </FormGroup> */}
-                    {/* <FormGroup>
-                        <Label for="specialties">Your Cooking Specialties</Label>
-                        <Input 
-                            className="form-control text-center" 
-                            type="text"
-                            name="specialties"
-                            id="specialties" 
-                            placeholder="Southern, Comfort, Italian, Mexican, etc."
-                            onChange={handleProfileInputChange}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="bio">Short Bio</Label>
-                        <Input 
-                            className="form-control text-center" 
-                            type="text"
-                            name="bio"
-                            id="bio" 
-                            placeholder="Write something for prospective buyers"
-                            onChange={handleProfileInputChange}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="cookImg">Cook Profile Image</Label>
-                        <Input 
-                            className="form-control text-center" 
-                            type="file"
-                            name="cookImg"
-                            id="cookImg" 
-                            onChange={handleProfileInputChange}
-                        />
-                        <FormText color="muted">
-                            Upload a profile image. Buyer's trust cooks they can see!
-                        </FormText>
-                    </FormGroup> */}
                     <Button 
                         className="btn btn-primary btn-block mt-5"
                         type="submit"

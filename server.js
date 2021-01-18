@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3001;
 
 // middleware
 app.use(logger("dev"));
+// app.use("/uploads", express.static("uploads"));
 // app.use(compression());
 app.use(cors({ origin: "http://localhost:3000", credentials: true })); //react and server communciation for data transfer //
 app.use(express.urlencoded({ extended: true }));
@@ -43,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
 
 // IMPORTANT: { force: true } when changing data structures and upon initialization; else { force: false }
 db.sequelize
-  .sync({ force: false })
+  .sync({ force: false }) 
   .then(() => {
     app.listen(PORT, () => {
       console.log(`🌎  ==> API Server now listening on PORT ${PORT}! Go to https://localhost:${PORT}`);

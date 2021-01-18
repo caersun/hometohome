@@ -1,12 +1,13 @@
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useAuthState } from "../utils/AuthContext";
+import API from "../utils/API";
 import { Container, Col, Row, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from "reactstrap";
 import CookInfo from "../components/Cook/CookInfo";
 import CookListings from "../components/Cook/CookListings";
-import { useAuthState } from "../utils/AuthContext";
-import API from "../utils/API";
-import { useState } from "react";
 
 const Dash = () => {
+    const defaultListingImg = "https://res.cloudinary.com/dxpy2lt0i/image/upload/v1610938587/hatzfmp852s1jtiwkdvh.jpg";
     const history = useHistory();
     const userDetails = useAuthState();
     const [modal, setModal] = useState(false); 
@@ -25,6 +26,7 @@ const Dash = () => {
                 food: createListing.food,
                 price: createListing.price,
                 description: createListing.description,
+                imgURL: defaultListingImg,
                 CookId: userDetails.user.id
             }).then(data => {
                     setCreateListing({});
@@ -39,12 +41,10 @@ const Dash = () => {
     return (
         <Container>
             <Row>
-                <Col xs="12" md="3">
-                    <Container fluid>
-                        <CookInfo />
-                    </Container>
+                <Col xs="12" md="4">
+                    <CookInfo />
                 </Col>
-                <Col xs="12" md="9">
+                <Col xs="12" md="8">
                     <Container className="text-center" fluid>
                         <h2>Your Listings</h2>
                         <br />

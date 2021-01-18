@@ -1,7 +1,3 @@
-// const bcrypt = require("bcryptjs"); 
-// const LocalStrategy = require("passport-local").Strategy;
-// const passport = require("passport");
-
 module.exports = (sequelize, DataTypes) => {
 	const Cook = sequelize.define("Cook", {
 		firstName: {
@@ -12,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		// fullName: {
-		// 	type: DataTypes.STRING,
-		// 	allowNull: false
-		// },
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -27,16 +19,6 @@ module.exports = (sequelize, DataTypes) => {
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-		specialties: {
-			type: DataTypes.STRING,
-			defaultValue: "Home Cookin'"
-		},
-		bio: {
-			type: DataTypes.STRING
-		},
-		cookImg: {
-			type: DataTypes.STRING,
 		}
 	});
 
@@ -50,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 	// });
 
 	Cook.associate = db => {
+		Cook.hasOne(db.Profile, { onDelete: "cascade" });
 		Cook.hasMany(db.Listing, { onDelete: "cascade" });
 	};
 

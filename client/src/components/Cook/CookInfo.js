@@ -6,46 +6,80 @@ import API from "../../utils/API";
 
 const CookInfo = () => {
     const [cookInfo, setCookInfo] = useState({});
+    const [profileInfo, setProfileInfo] = useState({});
+    const [uploadedImage, setUploadedImage] = useState();
+    // const [profileImage, setProfileImage] = useState("");
     const [updateInfo, setUpdateInfo] = useState({});
     const [modal, setModal] = useState(false);
     const history = useHistory();
     const userDetails = useAuthState();
     const toggle = () => setModal(!modal);
+    const [imageModal, setImageModal] = useState(false);
+    const imageToggle = () => setImageModal(!imageModal);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
         setUpdateInfo({ ...updateInfo, [name]: value });
     };
 
-    const handleCookUpdate = event => {
-        event.preventDefault();
-
-        // TODO: How to get all these to resolve before we can get to getCookInfo()?
-
+    const updateConditions = () => {
         if (updateInfo.firstName) {
-            API.updateCook(userDetails.user.id, { firstName: updateInfo.firstName }).catch(err => console.log(err));
+            API.updateCook(cookInfo.id, { firstName: updateInfo.firstName })
+                .then(() => setProfileInfo({ ...cookInfo, firstName: updateInfo.firstName }))
+                .catch(err => console.log(err));
         };
 
         if (updateInfo.lastName) {
-            API.updateCook(userDetails.user.id, { lastName: updateInfo.lastName }).catch(err => console.log(err));
+            API.updateCook(cookInfo.id, { lastName: updateInfo.lastName })
+                .then(() => setProfileInfo({ ...cookInfo, lastName: updateInfo.lastName }))
+                .catch(err => console.log(err));
         };
 
         if (updateInfo.email) {
-            API.updateCook(userDetails.user.id, { email: updateInfo.email }).catch(err => console.log(err));
+            API.updateCook(cookInfo.id, { email: updateInfo.email })
+                .then(() => setProfileInfo({ ...cookInfo, email: updateInfo.email }))
+                .catch(err => console.log(err));
         };
 
         if (updateInfo.bio) {
-            API.updateProfile(userDetails.user.id, { bio: updateInfo.bio }).catch(err => console.log(err));
+            API.updateProfile(profileInfo.id, { bio: updateInfo.bio })
+                .then(() => setProfileInfo({ ...profileInfo, bio: updateInfo.bio }))
+                .catch(err => console.log(err));
         };
 
         if (updateInfo.specialties) {
-            API.updateProfile(userDetails.user.id, { specialties: updateInfo.specialties }).catch(err => console.log(err));
+            API.updateProfile(profileInfo.id, { specialties: updateInfo.specialties })
+                .then(() => setProfileInfo({ ...profileInfo, specialties: updateInfo.specialties }))
+                .catch(err => console.log(err));
         };
 
         if (updateInfo.location) {
-            API.updateProfile(userDetails.user.id, { location: updateInfo.location }).catch(err => console.log(err));
+            API.updateProfile(profileInfo.id, { location: updateInfo.location })
+                .then(() => setProfileInfo({ ...profileInfo, location: updateInfo.location }))
+                .catch(err => console.log(err));
         };
+    };
 
+    const handleImageUpload = () => {
+        const formData = new FormData();
+        formData.append("file", uploadedImage[0]);
+        formData.append("upload_preset", "dalcz0np");
+        API.uploadImage(formData)
+            .then(res => {
+                API.updateProfile(profileInfo.id, { cookImgURL: res.data.secure_url })
+                .then(() => setProfileInfo({ ...profileInfo, cookImgURL: res.data.secure_url }))
+                .catch(err => console.log(err));
+        }).catch(err => console.log(err));
+        imageToggle();
+    };
+
+    const handleCookUpdate = async (event) => {
+        event.preventDefault();
+        // handleImageUpload();
+        // TODO: How to get all these to resolve before we can get to getCookInfo()?
+        await updateConditions();
+
+        // // loadCook();
         toggle();
         history.replace("/");
         history.replace("/dash");        
@@ -53,21 +87,47 @@ const CookInfo = () => {
 
     useEffect(() => {
         API.getCook(userDetails.user.id)
-            .then(res => setCookInfo(res.data))
+            .then(res => {
+                setCookInfo(res.data);
+                setProfileInfo(res.data.Profile);
+            })
             .catch(err => console.log(err));
-    }, [userDetails.user, updateInfo]);
+    }, [userDetails.user.id]); 
 
     return (
         <div>
             <Card>
-                <CardImg top width="100%" src={cookInfo.Profile.img} alt={cookInfo.firstName} />
+                <CardImg top width="100%" src={profileInfo.cookImgURL} alt={cookInfo.firstName} />
+                <Button onClick={imageToggle}>Edit Profile Image</Button>
                 <CardBody>
                     <CardTitle tag="h5">{cookInfo.firstName} {cookInfo.lastName}</CardTitle>
-                    <CardSubtitle tag="h6" className="mb-2 text-muted">{cookInfo.Profile.specialties}</CardSubtitle>
-                    <CardText>{cookInfo.Profile.bio}</CardText>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">{profileInfo.specialties}</CardSubtitle>
+                    <CardText>{profileInfo.bio}</CardText>
+                    <CardText>{profileInfo.location}</CardText>
                     <Button onClick={toggle}>Edit</Button>
                 </CardBody>
             </Card>
+            <Modal isOpen={imageModal} toggle={imageToggle}>
+                <ModalHeader toggle={imageToggle}>Update Profile Image</ModalHeader>
+                <ModalBody>
+                    <Form>
+                        <FormGroup>
+                            <input 
+                                className="form-control text-center"
+                                type="file"
+                                name="cookImg"
+                                id="cookImg"
+                                onChange={(e => setUploadedImage(e.target.files))}
+                            />
+                        </FormGroup>
+                        <Button className="btn btn-primary btn-block mt-5"
+                            // type="submit"
+                            onClick={handleImageUpload}>
+                                Update Profile Image
+                        </Button>
+                    </Form>
+                </ModalBody>
+            </Modal>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Cook Profile</ModalHeader>
                 <ModalBody>
@@ -111,7 +171,6 @@ const CookInfo = () => {
                                 onChange={handleInputChange}
                             />
                         </FormGroup>
-                        {/* specialties, bio, location, cookImg */}
                         <FormGroup>
                             <Label for="specialties">Specialties</Label>
                             <Input 
@@ -119,7 +178,7 @@ const CookInfo = () => {
                                 type="text"
                                 name="specialties"
                                 id="specialties"
-                                placeholder={cookInfo.Profile.specialties}
+                                placeholder={profileInfo.specialties}
                                 onChange={handleInputChange}
                             />
                         </FormGroup>
@@ -130,7 +189,7 @@ const CookInfo = () => {
                                 type="text"
                                 name="bio"
                                 id="bio"
-                                placeholder={cookInfo.Profile.bio}
+                                placeholder={profileInfo.bio}
                                 onChange={handleInputChange}
                             />
                         </FormGroup>
@@ -141,7 +200,7 @@ const CookInfo = () => {
                                 type="text"
                                 name="location"
                                 id="location"
-                                placeholder={cookInfo.Profile.bio}
+                                placeholder={profileInfo.location}
                                 onChange={handleInputChange}
                             />
                         </FormGroup>

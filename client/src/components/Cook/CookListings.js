@@ -4,7 +4,6 @@ import CookListingCard from "./CookListingCard";
 import { useAuthState } from "../../utils/AuthContext";
 import API from "../../utils/API";
 
-// import { connect } from "react-redux";
 
 const CookListings = () => {
     const [allCookListings, setAllCookListings] = useState([]);
@@ -32,11 +31,4 @@ const CookListings = () => {
     );
 };
 
-// const mapStateToProps = state => {
-//     return {
-//         products: state.shop.products
-//     }
-// };
-
 export default CookListings;
-// export default connect(mapStateToProps)(CookListings);

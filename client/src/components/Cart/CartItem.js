@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { adjustQty, removeFromCart } from "../../utils/Redux/Shopping/shopping-actions";
 
@@ -13,7 +13,7 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
 
     return (
         <Card>
-            <CardImg top width="100%" src={item.img} alt={item.food} />
+            <CardImg top width="100%" src={item.imgURL} alt={item.food} />
             <CardBody>
                 <CardTitle tag="h5">
                     <span className="float-left">{item.food}</span>
@@ -21,7 +21,6 @@ const CartItem = ({ item, adjustQty, removeFromCart }) => {
                 </CardTitle>
                 <br />
                 <CardSubtitle tag="h6" className="mb-2 text-muted float-end">{item.description}</CardSubtitle>
-                {/* <CardText>{item.description}</CardText> */}
                 <Form>
                     <FormGroup>
                         <Label for="qty" className="float-right">Quantity</Label>
