@@ -39,7 +39,7 @@ const makePayment = token => {
   return (
     <CardFooter>
         <StripeCheckout 
-        stripeKey= "pk_test_51I08ayILHVKLC4m69LnxDz4ZcENsF2BMdQOZdC9pdu1ZhK4zTkgEDjyOqUl7esOTNlCAztWxc6NyTWDVR5nbFZww0044qHxnUg" // {process.env.REACT_APP_KEY} 
+        stripeKey= "pk_test_51I08ayILHVKLC4m6Ci2lCVxPV3UjnWVnZFgknF50dTXqhgqCY93QSbMP4IqmORI6rAvHf2xDtp4ufBzeySIcEAcX00SWH63wkC" // {process.env.REACT_APP_KEY} 
         token= "makePayment" 
         name="Credit Card Information" 
         amount={props.totalPrice * 100}
