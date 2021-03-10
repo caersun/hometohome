@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
 
     Profile.associate = db => {
         Profile.belongsTo(db.Cook, { foreignKey: { allowNull: false }});
-        // Profile.hasOne(db.CookImage, { onDelete: "cascade" });
     };
 
     return Profile

@@ -33,7 +33,6 @@ module.exports = (sequelize, DataTypes) => {
 
     Listing.associate = db => {
         Listing.belongsTo(db.Cook, { foreignKey: { allowNull: false }});
-        // Listing.hasOne(db.ListingImage, { onDelete: "cascade" });
     };
 
     return Listing;

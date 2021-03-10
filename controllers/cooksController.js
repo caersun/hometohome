@@ -4,7 +4,7 @@ const db = require("../models");
 const cooksController = {
     findAll: (req, res) => {
         db.Cook
-            .findAll({ include: [db.Profile, db.Listing] }) // add db.Listing
+            .findAll({ include: [db.Profile, db.Listing] }) 
             // is there a way to sort?
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -12,10 +12,10 @@ const cooksController = {
     findById: (req, res) => {
         db.Cook.findOne({ 
             where: { id: req.params.id },
-            include: [db.Profile, db.Listing] // add db.Listing
+            include: [db.Profile, db.Listing] 
         })
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.json(err)); //.status(422)
+            .catch(err => res.status(422).json(err)); 
     },
     update: (req, res) => {
         db.Cook.update(req.body, { where: { id: req.params.id } })
@@ -24,7 +24,7 @@ const cooksController = {
     },
     remove: (req, res) => {
         db.Cook.destroy({ where: { id: req.user.id } })
-            .then(result => res.json({ id: result })) // what's this doing? why not like ln 63?
+            .then(result => res.json({ id: result })) // what's this doing? 
             .catch(err => res.status(422).json(err)); // why not status 401?
     }
 };
