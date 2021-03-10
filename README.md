@@ -18,11 +18,15 @@ A MERN e-commerce application to connect entreupenurial homecooks and their hung
  - Axios
  - APIs
 
-## Installation
+## Access and Installation
 
 Access the live site: [hometohome.herokuapp.com](https://hometohome.herokuapp.com/)
 
 To install and run site locally, intilize with `npm install` or `npm i`. Change necessary variables in local `.env`. Then in the root directory run `npm start`. 
+
+## View
+![Hometohome app's landing page](hometohome-site.png)
+
 
 ## Contributors
 
