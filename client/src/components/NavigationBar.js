@@ -28,7 +28,7 @@ const NavigationBar = ({ cart }) => {
             setLoggedIn(true)
         };
 
-        console.log("Navbar ~ loggedIn", loggedIn);
+        // console.log("Navbar ~ loggedIn", loggedIn);
 
         cart.forEach(item => count += +item.qty);
         setCartCount(count);

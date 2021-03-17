@@ -15,9 +15,7 @@ const Cart = ({ cart }) => {
         // console.log("in cartjs ~ cart incoming from state", cart);
 
         cart.forEach(item => {
-            console.log("item", item);
             items += +item.qty;
-            console.log("items", items);
             price += item.qty * item.price;
         });
 

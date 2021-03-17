@@ -11,7 +11,7 @@ const Dash = () => {
     const history = useHistory();
     const userDetails = useAuthState();
     const [modal, setModal] = useState(false); 
-    const [createListing, setCreateListing] = useState({ food: "", price: 0, description: "" });
+    const [createListing, setCreateListing] = useState({ food: "", price: 0.00, description: "" });
     const toggle = () => setModal(!modal);
 
     const handleInputChange = event => {
@@ -22,13 +22,15 @@ const Dash = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (createListing.food && createListing.price && createListing.description) {
+            // console.log("food: " + createListing.food, "price: " + createListing.price);
             API.createListing({
                 food: createListing.food,
-                price: createListing.price,
+                price: +createListing.price,
                 description: createListing.description,
                 imgURL: defaultListingImg,
                 CookId: userDetails.user.id
             }).then(data => {
+                    // console.log("in createListing ~ data: ", data);
                     setCreateListing({});
                     toggle();
                     // TODO: Need to make it so that new listings automatically populate without going to home and back
@@ -80,7 +82,7 @@ const Dash = () => {
                                         type="number"
                                         name="price"
                                         id="price" 
-                                        placeholder="0.00"
+                                        placeholder={0}
                                         onChange={handleInputChange}
                                     />
                                 </FormGroup>
