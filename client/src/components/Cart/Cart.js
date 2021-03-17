@@ -12,10 +12,12 @@ const Cart = ({ cart }) => {
     useEffect(() => {
         let items = 0;
         let price = 0;
-        console.log("in cartjs ~ cart incoming from state", cart);
+        // console.log("in cartjs ~ cart incoming from state", cart);
 
         cart.forEach(item => {
-            items += item.qty;
+            console.log("item", item);
+            items += +item.qty;
+            console.log("items", items);
             price += item.qty * item.price;
         });
 

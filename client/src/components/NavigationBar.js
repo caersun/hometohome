@@ -30,7 +30,7 @@ const NavigationBar = ({ cart }) => {
 
         console.log("Navbar ~ loggedIn", loggedIn);
 
-        cart.forEach(item => count += item.qty);
+        cart.forEach(item => count += +item.qty);
         setCartCount(count);
     }, [userDetails.user, loggedIn, cart, cartCount,]);
     

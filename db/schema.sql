@@ -1,2 +1,2 @@
 DROP DATABASE IF EXISTS hometohome;
-CREATE DATABASE hometohome;
+CREATE DATABASE hometohome; 

@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session")
 const logger = require("morgan");
 // const compression = require("compression");
-const cors = require('cors');
+const cors = require("cors");
 const passport = require("./config/passport");
 const flash = require("connect-flash");
 const db = require("./models");
@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === "production") {
 
 // IMPORTANT: { force: true } when changing data structures and upon initialization; else { force: false }
 db.sequelize
-  .sync({ force: true }) 
+  .sync({ force: false }) 
   .then(() => {
     app.listen(PORT, () => {
       console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
