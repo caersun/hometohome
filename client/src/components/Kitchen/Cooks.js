@@ -10,7 +10,7 @@ const Cooks = () => {
         // unmounted component? could memory leak. might have to cancel all subscriptions and async tasks
         API.getCooks()
             .then(res => {
-                // console.log("all homecooks", res.data);
+                console.log("all homecooks", res.data);
                 setAllCooks(res.data);
             })
             .catch(err => console.log(err));

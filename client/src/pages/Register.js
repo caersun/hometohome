@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Container, Card, CardBody, Form, FormGroup, Label, Input, Button, Row, Col } from "reactstrap"
+import { Container, Card, CardBody, Form, FormGroup, Label, Input, FormFeedback, Button, Row, Col } from "reactstrap"
 import API from "../utils/API";
 
-// TODO: Need logic to compare passwords within form
+// TODO: Increase password requirements
 // TODO: Show frontend error if a user attempts to signup twice
-// TODO: Now showing full register info? Probably in register thing
 function Register() {
+    const [invalidPassword, setInvalidPassword] = useState(false);
+    const [validPassword, setValidPassword] = useState(false);
     const [registerUser, setRegisterUser] = useState({});
     const history = useHistory();
     const defaultProfileImg = "https://res.cloudinary.com/dxpy2lt0i/image/upload/v1610923727/rrw9yj7b18vlrbis7hc8.jpg";
@@ -18,12 +19,22 @@ function Register() {
 
     const handleRegistration = (event) => {
         event.preventDefault();
+        
+        if (registerUser.password !== registerUser.confirm) {
+            setInvalidPassword(true);
+            setValidPassword(false);
+            return;
+        } else {
+            setInvalidPassword(false);
+            setValidPassword(true);
+        }
+
         if (registerUser.firstName && registerUser.lastName && registerUser.email && registerUser.password) {
             API.register({
                 firstName: registerUser.firstName,
                 lastName: registerUser.lastName,
                 email: registerUser.email,
-                password: registerUser.password,
+                password: registerUser.confirm,
             }).then((res) => {
                 API.createProfile({ 
                     CookId: res.data.id,
@@ -35,7 +46,8 @@ function Register() {
         }
     };
 
-    return <Container>
+    return (
+    <Container>
         <Card>
             <CardBody>
                 <h2 className="text-center mb-3">Become a Homecook</h2>
@@ -78,10 +90,13 @@ function Register() {
                             placeholder="Email"
                             onChange={handleRegistrationInputChange}
                         />
+                        
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Password</Label>
                         <Input 
+                            invalid={invalidPassword}
+                            valid={validPassword}
                             className="form-control text-center" 
                             type="password"
                             name="password"
@@ -89,6 +104,20 @@ function Register() {
                             placeholder="Password"
                             onChange={handleRegistrationInputChange}
                         />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="confirm">Confirm Password</Label>
+                        <Input 
+                            invalid={invalidPassword}
+                            valid={validPassword}
+                            className="form-control text-center"
+                            type="password"
+                            name="confirm"
+                            id="confirm"
+                            placeholder="Confirm Password"
+                            onChange={handleRegistrationInputChange}
+                        />
+                        <FormFeedback>Your passwords do not match</FormFeedback>
                     </FormGroup>
                     <Button 
                         className="btn btn-primary btn-block mt-5"
@@ -101,6 +130,7 @@ function Register() {
             </CardBody>
         </Card>
     </Container>
+    )
 };
 
 export default Register;
