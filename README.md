@@ -22,7 +22,7 @@ A MERN e-commerce application to connect entreupenurial homecooks and their hung
 
 Access the live site: [hometohome.herokuapp.com](https://hometohome.herokuapp.com/)
 
-To install and run site locally, intilize with `npm install` or `npm i`. Change necessary variables in local `.env`. Then in the root directory run `npm start`. 
+To install and run site locally, intilize with `npm install` or `npm i`. Create local SQL database with `schema.sql`. Then in the root directory run `npm start`. 
 
 ## View
 ![Hometohome app's landing page](hometohome-site.png)
@@ -31,9 +31,9 @@ To install and run site locally, intilize with `npm install` or `npm i`. Change 
 ## Contributors
 
  - [Cynthia Garcia](https://github.com/caersun)
- - Amanda
- - Emmanuel
- - Toccara 
+ - [Amanda Neal](https://github.com/amandaneal1131)
+ - [Manu](https://github.com/manu-austin)
+ - [Toccara Hicks](https://github.com/Toccara)
 
 ## License
 
