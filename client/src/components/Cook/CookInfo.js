@@ -7,8 +7,8 @@ import API from "../../utils/API";
 const CookInfo = () => {
     const [cookInfo, setCookInfo] = useState({});
     const [profileInfo, setProfileInfo] = useState({});
-    const [uploadedImage, setUploadedImage] = useState();
-    // const [profileImage, setProfileImage] = useState("");
+    const [uploadedImageFile, setUploadedImageFile] = useState();
+    const [updatedImageURL, setUpdatedImageURL] = useState("");
     const [updateInfo, setUpdateInfo] = useState({});
     const [modal, setModal] = useState(false);
     const history = useHistory();
@@ -60,19 +60,6 @@ const CookInfo = () => {
         };
     };
 
-    const handleImageUpload = () => {
-        const formData = new FormData();
-        formData.append("file", uploadedImage[0]);
-        formData.append("upload_preset", "dalcz0np");
-        API.uploadImage(formData)
-            .then(res => {
-                API.updateProfile(profileInfo.id, { cookImgURL: res.data.secure_url })
-                .then(() => setProfileInfo({ ...profileInfo, cookImgURL: res.data.secure_url }))
-                .catch(err => console.log(err));
-        }).catch(err => console.log(err));
-        imageToggle();
-    };
-
     const handleCookUpdate = async (event) => {
         event.preventDefault();
         // handleImageUpload();
@@ -84,6 +71,43 @@ const CookInfo = () => {
         history.replace("/");
         history.replace("/dash");        
     };
+
+    const handleImageFile = () => {
+        const formData = new FormData();
+        formData.append("file", uploadedImageFile[0]);
+        formData.append("upload_preset", "dalcz0np");
+        API.uploadImage(formData)
+            .then(res => {
+                API.updateProfile(profileInfo.id, { cookImgURL: res.data.secure_url })
+                .then(() => setProfileInfo({ ...profileInfo, cookImgURL: res.data.secure_url }))
+                .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+        setUploadedImageFile();
+    };
+
+    const handleImageURL = () => {
+        // TODO: function validate if it is an image/type/size?
+        API.updateProfile(profileInfo.id, { cookImgURL: updatedImageURL })
+            .then(() => setProfileInfo({ ...profileInfo, cookImgURL: updatedImageURL }))
+            .catch(err => console.log(err));
+        setUpdatedImageURL("");
+    };
+
+    const handleImageUpdate = () => {
+        if (updatedImageURL) {
+            console.log("updatedImageURL", updatedImageURL);
+            handleImageURL();
+        } else if (uploadedImageFile) {
+            console.log("uploadedImage object", uploadedImageFile);
+            handleImageFile();
+        };
+
+        imageToggle();
+    };
+
+
+    
 
     useEffect(() => {
         API.getCook(userDetails.user.id)
@@ -112,17 +136,27 @@ const CookInfo = () => {
                 <ModalBody>
                     <Form>
                         <FormGroup>
+                            <Label for="cookImgURL">Image URL</Label>
+                            <Input 
+                                type="url"
+                                name="cookImgURL"
+                                id="cookImgURL"
+                                onChange={(e => setUpdatedImageURL(e.target.value))}
+                            ></Input>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="cookImg">Or Upload Image (.jpg, .jpeg)</Label>
                             <input 
                                 className="form-control text-center"
                                 type="file"
                                 name="cookImg"
                                 id="cookImg"
-                                onChange={(e => setUploadedImage(e.target.files))}
+                                onChange={(e => setUploadedImageFile(e.target.files))}
                             />
                         </FormGroup>
                         <Button className="btn btn-primary btn-block mt-5"
                             // type="submit"
-                            onClick={handleImageUpload}>
+                            onClick={handleImageUpdate}>
                                 Update Profile Image
                         </Button>
                     </Form>
