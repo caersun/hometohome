@@ -1,0 +1,18 @@
+[
+    {
+        "Listings": [],
+        "Profile": {
+            "CookId": 1,
+            "bio": null,
+            "cookImgURL": "https://res.cloudinary.com/dxpy2lt0i/image/upload/v1610923727/rrw9yj7b18vlrbis7hc8.jpg",
+            "id": 1,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "",
+        "firstName": "test",
+        "id": 1,
+        "lastName": "test",
+        "password": "test"
+    }
+]

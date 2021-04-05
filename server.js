@@ -41,6 +41,15 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
+// route redirect to https
+// app.all("*", (req, res, next) => {
+//   if (req.headers["x-forwarded-proto"] !== "https") {
+//     res.redirect("https://" + req.headers.host + req.url);
+//   } else {
+//     next(); // continue to other routes if not redirecting
+//   }
+// })
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
