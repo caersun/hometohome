@@ -26,7 +26,7 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use(sslRedirect());
+app.use(sslRedirect);
 
 // making flash messages available to the front-end
 app.use((req, res, next) => {
