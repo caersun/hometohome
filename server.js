@@ -6,6 +6,7 @@ const session = require("express-session")
 const logger = require("morgan");
 const cors = require("cors");
 const path = require("path");
+const sslRedirect = require("heroku-ssl-redirect");
 
 const passport = require("./config/passport");
 const db = require("./models");
@@ -25,6 +26,7 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(sslRedirect());
 
 // making flash messages available to the front-end
 app.use((req, res, next) => {
