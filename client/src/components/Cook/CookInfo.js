@@ -7,9 +7,9 @@ import API from "../../utils/API";
 const CookInfo = () => {
     const [cookInfo, setCookInfo] = useState({});
     const [profileInfo, setProfileInfo] = useState({});
-    const [uploadedImageFile, setUploadedImageFile] = useState();
     const [updatedImageURL, setUpdatedImageURL] = useState("");
-    const [updateInfo, setUpdateInfo] = useState({});
+    const [updatedImageFile, setUpdatedImageFile] = useState();
+        const [updateInfo, setUpdateInfo] = useState({});
     const [modal, setModal] = useState(false);
     const history = useHistory();
     const userDetails = useAuthState();
@@ -72,9 +72,18 @@ const CookInfo = () => {
         history.replace("/dash");        
     };
 
+    const handleImageURL = () => {
+        // TODO: function validate if it is an image/type/size?
+        
+        API.updateProfile(profileInfo.id, { cookImgURL: updatedImageURL })
+            .then(() => setProfileInfo({ ...profileInfo, cookImgURL: updatedImageURL }))
+            .catch(err => console.log(err));
+        setUpdatedImageURL("");
+    };
+
     const handleImageFile = () => {
         const formData = new FormData();
-        formData.append("file", uploadedImageFile[0]);
+        formData.append("file", updatedImageFile[0]);
         formData.append("upload_preset", "dalcz0np");
         API.uploadImage(formData)
             .then(res => {
@@ -83,23 +92,15 @@ const CookInfo = () => {
                 .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
-        setUploadedImageFile();
-    };
-
-    const handleImageURL = () => {
-        // TODO: function validate if it is an image/type/size?
-        API.updateProfile(profileInfo.id, { cookImgURL: updatedImageURL })
-            .then(() => setProfileInfo({ ...profileInfo, cookImgURL: updatedImageURL }))
-            .catch(err => console.log(err));
-        setUpdatedImageURL("");
+        setUpdatedImageFile();
     };
 
     const handleImageUpdate = () => {
         if (updatedImageURL) {
-            console.log("updatedImageURL", updatedImageURL);
+            // console.log("updatedImageURL", updatedImageURL);
             handleImageURL();
-        } else if (uploadedImageFile) {
-            console.log("uploadedImage object", uploadedImageFile);
+        } else if (updatedImageFile) {
+            // console.log("uploadedImage object", uploadedImageFile);
             handleImageFile();
         };
 
@@ -142,7 +143,7 @@ const CookInfo = () => {
                                 name="cookImgURL"
                                 id="cookImgURL"
                                 onChange={(e => setUpdatedImageURL(e.target.value))}
-                            ></Input>
+                            />
                         </FormGroup>
                         <FormGroup>
                             <Label for="cookImg">Or Upload Image (.jpg, .jpeg)</Label>
@@ -151,7 +152,7 @@ const CookInfo = () => {
                                 type="file"
                                 name="cookImg"
                                 id="cookImg"
-                                onChange={(e => setUploadedImageFile(e.target.files))}
+                                onChange={(e => setUpdatedImageFile(e.target.files))}
                             />
                         </FormGroup>
                         <Button className="btn btn-primary btn-block mt-5"
