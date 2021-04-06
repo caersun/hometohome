@@ -3,6 +3,411 @@
         "Listings": [
             {
                 "CookId": 1,
+                "description": "3 buttermilk pancakes with chocolate bits",
+                "food": "Chocolate pancakes",
+                "id": 1,
+                "imgURL": "https://images.pexels.com/photos/4800804/pexels-photo-4800804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "inStock": 3,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 1,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/75.jpg",
+            "id": 1,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "test@test.com",
+        "firstName": "",
+        "id": 1,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 2,
+                "description": "",
+                "food": "",
+                "id": 3,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 2,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/50.jpg",
+            "id": 2,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "vera.edwards@example.com,",
+        "firstName": "Vera",
+        "id": 2,
+        "lastName": "Edwards",
+        "password": "veraspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 3,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/51.jpg",
+            "id": 3,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "colleen.soto@example.com",
+        "firstName": "Colleen",
+        "id": 3,
+        "lastName": "Soto",
+        "password": "colleenspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 4,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/50.jpg",
+            "id": 4,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "willie.gonzalez@example.com",
+        "firstName": "willie",
+        "id": 4,
+        "lastName": "gonzalez",
+        "password": "williespassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 5,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/51.jpg",
+            "id": 5,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "reginald.wright@example.com",
+        "firstName": "Reginald",
+        "id": 5,
+        "lastName": "Wright",
+        "password": "reginaldspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 6,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/52.jpg",
+            "id": 6,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "test@test.com",
+        "firstName": "Tristan",
+        "id": 6,
+        "lastName": "Lowe",
+        "password": "tristanspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 7,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/53.jpg",
+            "id": 7,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "ricky.ruiz@example.com",
+        "firstName": "Ricky",
+        "id": 7,
+        "lastName": "Ruiz",
+        "password": "rickyspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 8,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/52.jpg",
+            "id": 8,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "valerie.gray@example.com",
+        "firstName": "Valerie",
+        "id": 8,
+        "lastName": "Gray",
+        "password": "valeriespassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 9,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/54.jpg",
+            "id": 9,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "craig.bradley@example.com",
+        "firstName": "Craig",
+        "id": 9,
+        "lastName": "Bradley",
+        "password": "craigspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 10,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/53.jpg",
+            "id": 10,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "penny.wade@example.com",
+        "firstName": "Penny",
+        "id": 10,
+        "lastName": "Wade",
+        "password": "pennyspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 11,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/54.jpg",
+            "id": 11,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "stacey.armstrong@example.com",
+        "firstName": "Stacey",
+        "id": 11,
+        "lastName": "Armstrong",
+        "password": "staceyspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 12,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 12,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 12,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/55.jpg",
+            "id": 12,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "luis.moore@example.com",
+        "firstName": "Luis",
+        "id": 12,
+        "lastName": "moore",
+        "password": "luisspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 13,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/56.jpg",
+            "id": 13,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "Clayton Hansen",
+        "firstName": "Clayton",
+        "id": 13,
+        "lastName": "Hansen",
+        "password": "claytonspassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 14,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/55.jpg",
+            "id": 14,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "arlene.mitchell@example.com",
+        "firstName": "Arlene",
+        "id": 14,
+        "lastName": "Mitchell",
+        "password": "arlenespassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 15,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/57.jpg",
+            "id": 15,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "francisco.banks@example.com",
+        "firstName": "Francisco",
+        "id": 15,
+        "lastName": "Banks",
+        "password": "franciscospassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
                 "description": "",
                 "food": "",
                 "id": 1,
@@ -15,15 +420,258 @@
         "Profile": {
             "CookId": 1,
             "bio": null,
-            "cookImgURL": "https://",
-            "id": 1,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/56.jpg",
+            "id": 16,
             "location": null,
             "specialties": "Home Cookin'"
         },
-        "email": "test@test.com",
+        "email": "carole.stephens@example.com",
+        "firstName": "Carole",
+        "id": 16,
+        "lastName": "Stephans",
+        "password": "carolespassword"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 17,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/57.jpg",
+            "id": 17,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "harper.long@example.com",
         "firstName": "",
-        "id": 1,
+        "id": 17,
         "lastName": "",
         "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 18,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/58.jpg",
+            "id": 18,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "anne.torres@example.com",
+        "firstName": "",
+        "id": 18,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 19,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/58.jpg",
+            "id": 19,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "chester.payne@example.com",
+        "firstName": "",
+        "id": 19,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 20,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/59.jpg",
+            "id": 20,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "tamara.dunn@example.com",
+        "firstName": "",
+        "id": 20,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 21,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/women/60.jpg",
+            "id": 21,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "letitia.craig@example.com",
+        "firstName": "",
+        "id": 21,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 22,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/59.jpg",
+            "id": 22,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "randy.fleming@example.com",
+        "firstName": "",
+        "id": 22,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 23,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/60.jpg",
+            "id": 23,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "lonnie.hart@example.com",
+        "firstName": "",
+        "id": 23,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 24,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/61.jpg",
+            "id": 24,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "alfredo.jenkins@example.com",
+        "firstName": "",
+        "id": 24,
+        "lastName": "",
+        "password": "test"
+    },
+    {
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
+        "Profile": {
+            "CookId": 25,
+            "bio": null,
+            "cookImgURL": "https://randomuser.me/api/portraits/men/62.jpg",
+            "id": 25,
+            "location": null,
+            "specialties": "Home Cookin'"
+        },
+        "email": "tomothy.morgan@example.com",
+        "firstName": "Tomothy",
+        "id": 25,
+        "lastName": "Morgan",
+        "password": "tomothyspassword"
     }
 ]

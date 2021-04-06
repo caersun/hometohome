@@ -10,7 +10,7 @@ const Cook = ({ cook }) => {
     return (
         <div>
             <Card>
-                <CardImg top width="100%" src={cook.Profile.cookImgURL} alt={cook.firstName} />
+                {/* <CardImg top width="100%" src={cook.Profile.cookImgURL} alt={cook.firstName} /> */}
                 <CardBody>
                     <CardTitle tag="h5">{cook.firstName} {cook.lastName}</CardTitle>
                     <CardSubtitle tag="h6" className="mb-2 text-muted">{cook.Profile.specialties}</CardSubtitle>
