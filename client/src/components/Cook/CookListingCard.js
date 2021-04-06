@@ -60,7 +60,6 @@ const CookListingCard = ({ listing }) => {
 
         imageToggle();
 
-        // not working????
         history.replace("/");
         history.replace("/dash");
     };
@@ -169,7 +168,7 @@ const CookListingCard = ({ listing }) => {
                                     <Label for="price">Price</Label>
                                     <Input 
                                         className="form-control text-center"
-                                        type="num"
+                                        type="number"
                                         name="price"
                                         id="price"
                                         placeholder={listing.price}

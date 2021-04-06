@@ -19,14 +19,16 @@ const Dash = () => {
         setCreateListing({ ...createListing, [name]: value });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        if (createListing.food && createListing.price && createListing.description) {
+
+        if (createListing.food && createListing.price && createListing.inStock && createListing.description) {
             // console.log("food: " + createListing.food, "price: " + createListing.price);
             API.createListing({
                 food: createListing.food,
                 price: +createListing.price,
                 description: createListing.description,
+                inStock: +createListing.inStock,
                 imgURL: defaultListingImg,
                 CookId: userDetails.user.id
             }).then(data => {
@@ -60,20 +62,29 @@ const Dash = () => {
                 <ModalHeader toggle={toggle}>Add a Listing</ModalHeader>
                 <ModalBody>
                     <Form>
+                        <FormGroup>
+                            <Label for="food">Food Item</Label>
+                            <Input 
+                                className="form-control text-center"
+                                type="text"
+                                name="food"
+                                id="food" 
+                                placeholder="Meatloaf, Tamales, Pizza"
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="description">Description</Label>
+                            <Input 
+                                className="form-control text-center"
+                                type="text"
+                                name="description"
+                                id="description" 
+                                placeholder="description"
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
                         <Row>
-                            <Col>
-                                <FormGroup>
-                                    <Label for="food">Food Item</Label>
-                                    <Input 
-                                        className="form-control text-center"
-                                        type="text"
-                                        name="food"
-                                        id="food" 
-                                        placeholder="Meatloaf, Tamales, Pizza"
-                                        onChange={handleInputChange}
-                                    />
-                                </FormGroup>
-                            </Col>
                             <Col>
                                 <FormGroup>
                                     <Label for="price">Price</Label>
@@ -82,23 +93,26 @@ const Dash = () => {
                                         type="number"
                                         name="price"
                                         id="price" 
-                                        placeholder={0}
+                                        placeholder={0.00}
+                                        onChange={handleInputChange}
+                                    />
+                                </FormGroup>
+                            </Col>
+                            <Col>
+                                <FormGroup>
+                                    <Label for="inStock">How many are available?</Label>
+                                    <Input 
+                                        className="form-control text-center"
+                                        type="number"
+                                        name="inStock"
+                                        id="inStock"
+                                        placeholder={1}
                                         onChange={handleInputChange}
                                     />
                                 </FormGroup>
                             </Col>
                         </Row>
-                        <FormGroup>
-                                    <Label for="description">Description</Label>
-                                    <Input 
-                                        className="form-control text-center"
-                                        type="text"
-                                        name="description"
-                                        id="description" 
-                                        placeholder="description"
-                                        onChange={handleInputChange}
-                                    />
-                        </FormGroup>
+                        
                         <Button type="submit" onClick={handleSubmit}>Submit</Button>
                     </Form>
                 </ModalBody>
