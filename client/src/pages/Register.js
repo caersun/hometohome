@@ -27,15 +27,16 @@ function Register() {
         } else {
             setInvalidPassword(false);
             setValidPassword(true);
-        }
+        };
 
-        if (registerUser.firstName && registerUser.lastName && registerUser.email && registerUser.password) {
+        if (registerUser.firstName && registerUser.lastName && registerUser.email && registerUser.confirm) {
             API.register({
                 firstName: registerUser.firstName,
                 lastName: registerUser.lastName,
                 email: registerUser.email,
                 password: registerUser.confirm,
             }).then((res) => {
+                console.log("in register.js after register, res", res);
                 API.createProfile({ 
                     CookId: res.data.id,
                     cookImgURL: defaultProfileImg
@@ -83,6 +84,7 @@ function Register() {
                     <FormGroup>
                         <Label for="email">Email</Label>
                         <Input 
+                            autoComplete="email"
                             className="form-control text-center" 
                             type="email"
                             name="email"
@@ -97,6 +99,7 @@ function Register() {
                         <Input 
                             invalid={invalidPassword}
                             valid={validPassword}
+                            autoComplete="current-password"
                             className="form-control text-center" 
                             type="password"
                             name="password"
@@ -110,6 +113,7 @@ function Register() {
                         <Input 
                             invalid={invalidPassword}
                             valid={validPassword}
+                            autoComplete="confirm-password"
                             className="form-control text-center"
                             type="password"
                             name="confirm"

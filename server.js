@@ -58,7 +58,7 @@ if (process.env.NODE_ENV === "production") {
 
 // IMPORTANT: { force: true } when changing data structures and upon initialization; else { force: false }
 db.sequelize
-  .sync({ force: false }) 
+  .sync({ force: true }) 
   .then(() => {
     app.listen(PORT, () => {
       console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

@@ -3,10 +3,20 @@
         "Listings": [
             {
                 "CookId": 1,
-                "description": "3 buttermilk pancakes with chocolate bits",
-                "food": "Chocolate pancakes",
+                "description": "",
+                "food": "",
                 "id": 1,
-                "imgURL": "https://images.pexels.com/photos/4800804/pexels-photo-4800804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                "imgURL": "",
+                "inStock": 3,
+                "price": 0.00,
+                "purchased": false
+            },
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
                 "inStock": 3,
                 "price": 0.00,
                 "purchased": false
@@ -18,21 +28,31 @@
             "cookImgURL": "https://randomuser.me/api/portraits/men/75.jpg",
             "id": 1,
             "location": null,
-            "specialties": "Home Cookin'"
+            "specialties": "Breakfast foods"
         },
         "email": "test@test.com",
-        "firstName": "",
+        "firstName": "Floyd",
         "id": 1,
-        "lastName": "",
+        "lastName": "Walker",
         "password": "test"
     },
     {
         "Listings": [
             {
                 "CookId": 2,
-                "description": "",
-                "food": "",
+                "description": "Glass noodles with vegetables",
+                "food": "Chicken stir-fry",
                 "id": 3,
+                "imgURL": "",
+                "inStock": 2,
+                "price": 0.00,
+                "purchased": false
+            },
+            {
+                "CookId": 2,
+                "description": "Ground pork with mixed vegetables over rice",
+                "food": "Carne molida",
+                "id": 4,
                 "imgURL": "",
                 "inStock": 1,
                 "price": 0.00,

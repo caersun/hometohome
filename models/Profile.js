@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         cookImgURL: {
             type: DataTypes.STRING
+        },
+        delivers: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
         }
     });
 
