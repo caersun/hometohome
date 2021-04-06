@@ -13,38 +13,56 @@ const CookListingCard = ({ listing }) => {
     const imageToggle = () => setImageModal(!imageModal);
     const [updatedImageURL, setUpdatedImageURL] = useState("");
     const [updatedImageFile, setUpdatedImageFile] = useState();
-    const [currListingImage, setCurrListingImage] = useState(listing.imgURL);
+    // const [currListingImage, setCurrListingImage] = useState(listing.imgURL);
 
     const handleImageURL = () => {
         // TODO: Validate image URL 
-        API.updateProfile(listing.id, { imgURL: updatedImageURL })
-            .then(() => setCurrListingImage(updatedImageURL))
+        // console.log("handleImageURL ~ updatedImageURL", updatedImageURL);
+        API.updateListing(listing.id, { imgURL: updatedImageURL })
+            .then(res => console.log("updating listing.imgURL with direct URL", res))
+            // .then(() => setCurrListingImage(updatedImageURL))
             .catch(err => console.log(err));
-        setUpdatedImageURL("");
+        
     };
 
-    const handleImageFile = () => {
-        const formData = new FormData();
-        formData.append("file", updatedImageFile[0]);
-        formData.append("upload_preset", "dalcz0np");
+    const handleImageFile = (formData) => {
         API.uploadImage(formData)
             .then(res => {
+                console.log("handleImageFile ~ cloudinary URL", res.data.secure_url);
                 API.updateListing(listing.id, { imgURL: res.data.secure_url })
-                .then(() => setCurrListingImage(res.data.secure_url))
-                .catch(err => console.log(err));
-        }).catch(err => console.log(err));
-        setUpdatedImageFile();
+                    .then(res => console.log("updating listing.imgURL with cloudinary link", res))
+                    // .then(() => setCurrListingImage(res.data.secure_url))
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
     };
 
-    const handleImageUpdate = () => {
+    const handleImageUpdate = async event => {
+        event.preventDefault();
+
         if (updatedImageURL) {
             console.log("updatedImageURL", updatedImageURL);
-            handleImageURL();
+            await handleImageURL();
         } else if (updatedImageFile) {
             console.log("updatedImageFile object", updatedImageFile);
-            handleImageFile();
+            const formData = new FormData();
+
+            formData.append("file", updatedImageFile[0]);
+            formData.append("upload_preset", "dalcz0np");
+
+            await handleImageFile(formData);
+        } else {
+            return;
         };
+
+        setUpdatedImageURL("");
+        setUpdatedImageFile();
+
         imageToggle();
+
+        // not working????
+        history.replace("/");
+        history.replace("/dash");
     };
 
     const handleInputChange = event => {
@@ -52,7 +70,7 @@ const CookListingCard = ({ listing }) => {
         setListingEdits({ ...listingEdits, [name]: value });
     };
 
-    const editListing = () => {
+    const updateListing = () => {
         if (listingEdits.food) {
             API.updateListing(listing.id, { food: listingEdits.food })
                 .then(res => console.log("API.updateListing food res", res))
@@ -75,7 +93,7 @@ const CookListingCard = ({ listing }) => {
     const handleListingUpdate = async event => {
         event.preventDefault();
 
-        await editListing();
+        await updateListing();
 
         editToggle();
         history.replace("/");
@@ -85,7 +103,7 @@ const CookListingCard = ({ listing }) => {
     return (
         <div>
             <Card>
-                <CardImg top width="100%" src={currListingImage} alt={listing.food} />
+                <CardImg top width="100%" src={listing.imgURL} alt={listing.food} />
                 <Button onClick={imageToggle}>Edit Listing Image</Button>
                 <CardBody>
                     <CardTitle tag="h5">
