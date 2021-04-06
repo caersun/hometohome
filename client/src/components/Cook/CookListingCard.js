@@ -60,7 +60,7 @@ const CookListingCard = ({ listing }) => {
         };
 
         if (listingEdits.price) {
-            API.updateListing(listing.id, { price: listingEdits.price })
+            API.updateListing(listing.id, { price: +listingEdits.price })
                 .then(res => console.log("API.updateListing price ~ res", res))
                 .catch(err => console.log(err));
         };
