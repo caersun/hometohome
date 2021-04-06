@@ -1,18 +1,29 @@
 [
     {
-        "Listings": [],
+        "Listings": [
+            {
+                "CookId": 1,
+                "description": "",
+                "food": "",
+                "id": 1,
+                "imgURL": "",
+                "inStock": 1,
+                "price": 0.00,
+                "purchased": false
+            }
+        ],
         "Profile": {
             "CookId": 1,
             "bio": null,
-            "cookImgURL": "https://res.cloudinary.com/dxpy2lt0i/image/upload/v1610923727/rrw9yj7b18vlrbis7hc8.jpg",
+            "cookImgURL": "https://",
             "id": 1,
             "location": null,
             "specialties": "Home Cookin'"
         },
-        "email": "",
-        "firstName": "test",
+        "email": "test@test.com",
+        "firstName": "",
         "id": 1,
-        "lastName": "test",
+        "lastName": "",
         "password": "test"
     }
 ]

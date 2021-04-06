@@ -19,7 +19,7 @@ const CookListingCard = ({ listing }) => {
         // TODO: Validate image URL 
         // console.log("handleImageURL ~ updatedImageURL", updatedImageURL);
         API.updateListing(listing.id, { imgURL: updatedImageURL })
-            .then(res => console.log("updating listing.imgURL with direct URL", res))
+            // .then(res => console.log("updating listing.imgURL with direct URL", res))
             // .then(() => setCurrListingImage(updatedImageURL))
             .catch(err => console.log(err));
         
@@ -28,7 +28,7 @@ const CookListingCard = ({ listing }) => {
     const handleImageFile = (formData) => {
         API.uploadImage(formData)
             .then(res => {
-                console.log("handleImageFile ~ cloudinary URL", res.data.secure_url);
+                // console.log("handleImageFile ~ cloudinary URL", res.data.secure_url);
                 API.updateListing(listing.id, { imgURL: res.data.secure_url })
                     .then(res => console.log("updating listing.imgURL with cloudinary link", res))
                     // .then(() => setCurrListingImage(res.data.secure_url))
@@ -41,10 +41,10 @@ const CookListingCard = ({ listing }) => {
         event.preventDefault();
 
         if (updatedImageURL) {
-            console.log("updatedImageURL", updatedImageURL);
+            // console.log("updatedImageURL", updatedImageURL);
             await handleImageURL();
         } else if (updatedImageFile) {
-            console.log("updatedImageFile object", updatedImageFile);
+            // console.log("updatedImageFile object", updatedImageFile);
             const formData = new FormData();
 
             formData.append("file", updatedImageFile[0]);
@@ -77,6 +77,7 @@ const CookListingCard = ({ listing }) => {
         };
 
         if (listingEdits.price) {
+            console.log("price ~ string or num?", +listingEdits.price);
             API.updateListing(listing.id, { price: +listingEdits.price })
                 .then(res => console.log("API.updateListing price ~ res", res))
                 .catch(err => console.log(err));

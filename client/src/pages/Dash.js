@@ -11,7 +11,7 @@ const Dash = () => {
     const history = useHistory();
     const userDetails = useAuthState();
     const [modal, setModal] = useState(false); 
-    const [createListing, setCreateListing] = useState({ food: "", price: 0.00, description: "" });
+    const [createListing, setCreateListing] = useState({ food: "", price: 0.00, description: "", inStock: 1 });
     const toggle = () => setModal(!modal);
 
     const handleInputChange = event => {
