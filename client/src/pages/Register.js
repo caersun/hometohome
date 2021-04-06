@@ -36,7 +36,7 @@ function Register() {
                 email: registerUser.email,
                 password: registerUser.confirm,
             }).then((res) => {
-                console.log("in register.js after register, res", res);
+                // console.log("in register.js after register, res", res);
                 API.createProfile({ 
                     CookId: res.data.id,
                     cookImgURL: defaultProfileImg
