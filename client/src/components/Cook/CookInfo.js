@@ -5,14 +5,14 @@ import { useAuthState } from "../../utils/AuthContext";
 import API from "../../utils/API";
 
 const CookInfo = () => {
+    const history = useHistory();
+    const userDetails = useAuthState();
     const [cookInfo, setCookInfo] = useState({});
     const [profileInfo, setProfileInfo] = useState({});
     const [updatedImageURL, setUpdatedImageURL] = useState("");
     const [updatedImageFile, setUpdatedImageFile] = useState();
-        const [updateInfo, setUpdateInfo] = useState({});
+    const [updateInfo, setUpdateInfo] = useState({});
     const [modal, setModal] = useState(false);
-    const history = useHistory();
-    const userDetails = useAuthState();
     const toggle = () => setModal(!modal);
     const [imageModal, setImageModal] = useState(false);
     const imageToggle = () => setImageModal(!imageModal);
@@ -65,6 +65,7 @@ const CookInfo = () => {
         // handleImageUpload();
         // TODO: How to get all these to resolve before we can get to getCookInfo()?
         await updateConditions();
+        // TODO: clear out profile info setProfileInfo({})
 
         // // loadCook();
         toggle();
@@ -106,9 +107,6 @@ const CookInfo = () => {
 
         imageToggle();
     };
-
-
-    
 
     useEffect(() => {
         API.getCook(userDetails.user.id)
