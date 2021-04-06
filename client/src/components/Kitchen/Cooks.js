@@ -24,7 +24,7 @@ const Cooks = () => {
                 : (allCooks.map(cook => (
                     <Col xs="12" s="6" md="4" key={cook.id}>
                         <div>should see this for every cook</div>
-                        {/* <Cook cook={cook} /> */}
+                        <Cook cook={cook} />
                     </Col>
                 )))
             }  
