@@ -63,7 +63,7 @@ const Dash = () => {
                 <ModalBody>
                     <Form>
                         <FormGroup>
-                            <Label for="food">Food Item</Label>
+                            <Label for="food">Food</Label>
                             <Input 
                                 className="form-control text-center"
                                 type="text"
@@ -74,7 +74,7 @@ const Dash = () => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="description">Description</Label>
+                            <Label for="description">Short description of plate</Label>
                             <Input 
                                 className="form-control text-center"
                                 type="text"
