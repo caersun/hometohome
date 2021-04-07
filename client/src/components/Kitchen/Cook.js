@@ -13,7 +13,7 @@ const Cook = ({ cook }) => {
         // </div>
         <div>
             <Card body>
-                <img src={cook.Profile.cookImgURL} alt={cook.firstName} style={{ maxWidth: `64px`, borderRadius: `50%`, display: `block`, marginLeft: `auto`, marginRight: `auto` }} />
+                <img src={cook.Profile.cookImgURL} alt={cook.firstName} style={{ maxWidth: `64px`, maxHeight: `64px`, borderRadius: `50%`, display: `block`, marginLeft: `auto`, marginRight: `auto` }} />
                 <CardTitle tag="h5">{cook.firstName}'s Kitchen</CardTitle>
                 <CardText>{cook.Profile.specialties}</CardText>
                 <Button onClick={toggle}>Shop Homecook</Button>                       
