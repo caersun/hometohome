@@ -15,8 +15,8 @@ const ProductCard = ({ productData }) => {
                         alt={productData.food} 
                         style={{ 
                             maxWidth: `64px`, 
-                            borderRadius: `50%`,
-                            
+                            maxHeight: `64px`,
+                            borderRadius: `50%`
                         }}
                     />
                 </Col>
